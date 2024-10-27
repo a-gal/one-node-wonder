@@ -1,0 +1,47 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/refs/heads/main/helmrelease-helm-v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: clusterissuer
+  namespace: clusterissuer
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: clusterissuer
+      version: 9.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+
+    clusterIssuer:
+      selfSigned:
+        enabled: true
+        name: "selfsigned"
+      ACME:
+        - name: fiveoseven
+          cfapitoken: "${CLOUDFLARE_TOKEN}"
+          email: "${EMAIL}"
+          server: https://acme-v02.api.letsencrypt.org/directory
+          type: cloudflare
+        - name: fiveoseven-staging
+          cfapitoken: "${CLOUDFLARE_TOKEN}"
+          email: "${EMAIL}"
+          server: https://acme-staging-v02.api.letsencrypt.org/directory
+          type: cloudflare
