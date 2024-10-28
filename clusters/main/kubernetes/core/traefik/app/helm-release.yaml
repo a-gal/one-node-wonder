@@ -78,18 +78,18 @@ spec:
               trustedIPs: []
               # -- Trust every incoming connection
               insecureMode: false
-    # ingress:
-    #   main:
-    #     enabled: true
-    #     integrations:
-    #       traefik:
-    #         enabled: true
-    #       certManager:
-    #         enabled: true
-    #         certificateIssuer: fiveoseven
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          traefik:
+            enabled: true
+          certManager:
+            enabled: true
+            certificateIssuer: fiveoseven
 
-    #     hosts:
-    #       - host: traefik.${LOCAL_DOMAIN}
-    #         paths:
-    #           - path: /
-    #             pathType: Prefix
+        hosts:
+          - host: traefik-dash.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
