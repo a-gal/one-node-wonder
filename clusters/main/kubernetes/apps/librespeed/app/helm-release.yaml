@@ -32,7 +32,8 @@ spec:
     service:
       main:
         enabled: true
-        type: ClusterIP
+        type: LoadBalancer
+        loadBalancerIP: ${EXTRA_LB_IP}
     ingress:
       main:
         enabled: true
