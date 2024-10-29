@@ -1,0 +1,51 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.zinn.ca/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: filebrowser
+  namespace: filebrowser
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: filebrowser
+      version: 11.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    persistence:
+      data:
+        enabled: true
+        type: nfs
+        server: truenas.***REMOVED***
+        path: /mnt/big-one/media
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          traefik:
+            enabled: true
+          certManager:
+            enabled: true
+            certificateIssuer: fiveoseven
+        hosts:
+          - host: files.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
