@@ -41,6 +41,9 @@ spec:
         integrations:
           traefik:
             enabled: true
+            middlewares:
+              - name: local-only
+                namespace: traefik
           certManager:
             enabled: true
             certificateIssuer: fiveoseven

@@ -29,17 +29,15 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    # service:
-    #   main:
-    #     enabled: true
-    #     type: LoadBalancer
-    #     loadBalancerIP: ${EXTRA_LB_IP}
     ingress:
       main:
         enabled: true
         integrations:
           traefik:
             enabled: true
+            middlewares:
+              - name: local-only
+                namespace: traefik
           certManager:
             enabled: true
             certificateIssuer: fiveoseven
