@@ -1,0 +1,69 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.zinn.ca/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  annotations:
+    metadata.weave.works/description: This is the Weave GitOps Dashboard.  It provides
+      a simple way to get insights into your GitOps workloads.
+  name: weave-gitops
+  namespace: flux-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: weave-gitops
+      version: 4.0.36
+      sourceRef:
+        kind: HelmRepository
+        name: weave-gitops
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+
+    adminUser:
+      create: true
+      username: admin
+      passwordHash: ${WEAVE_ADMIN_HASH}
+    ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: fiveoseven
+        cert-manager.io/private-key-rotation-policy: Always
+        traefik.ingress.kubernetes.io/router.tls: 'true'
+        traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd,traefik-local-only@kubernetescrd
+      tls:
+        - hosts:
+            - gitops.${LOCAL_DOMAIN}
+          secretName: flux-system-weave-gitops
+      hosts:
+        - host: gitops.${LOCAL_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+    networkPolicy:
+      create: false
+    metrics:
+      enabled: true
+    rbac:
+      create: true
+      impersonationResourceNames: ["admin"]
+      additionalRules:
+        - apiGroups: ["infra.contrib.fluxcd.io"]
+          resources: ["terraforms"]
+          verbs: ["get", "list", "patch"]
+    # annotations:
+    #   reloader.stakater.com/auto: "true"
