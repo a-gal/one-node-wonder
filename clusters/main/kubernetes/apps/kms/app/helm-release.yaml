@@ -18,5 +18,7 @@ spec:
     TZ: Asia/Yekaterinburg
     service:
       main:
+        ports:
+          main:
+            nodePort: 1688
         type: NodePort
-        nodePort: 1688
