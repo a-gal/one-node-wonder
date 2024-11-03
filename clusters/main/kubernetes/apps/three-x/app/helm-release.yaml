@@ -24,7 +24,7 @@ spec:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
         bucket: three-x-custom
-        encrKey: ${VOLSYNC_ENCR_KEY}
+        encrKey: "${VOLSYNC_ENCR_KEY}"
         name: backup
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
