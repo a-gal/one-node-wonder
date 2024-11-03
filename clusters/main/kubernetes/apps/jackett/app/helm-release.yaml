@@ -20,7 +20,7 @@ spec:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
         bucket: jackett
-        encrKey: "${VOLSYNC_ENCR_KEY_1}${VOLSYNC_ENCR_KEY_2}"
+        encrKey: "##${VOLSYNC_ENCR_KEY_1}${VOLSYNC_ENCR_KEY_2}"
         name: backup
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
