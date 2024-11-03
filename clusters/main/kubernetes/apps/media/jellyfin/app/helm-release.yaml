@@ -89,9 +89,5 @@ spec:
           containers:
             main:
               env:
-                http_proxy:
-                  name: http_proxy
-                  value: ${HTTP_PROXY}
-                https_proxy:
-                  name: https_proxy
-                  value: ${HTTP_PROXY}
+                http_proxy: ${HTTP_PROXY}
+                https_proxy: ${HTTP_PROXY}
