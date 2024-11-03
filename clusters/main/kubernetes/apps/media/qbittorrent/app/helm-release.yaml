@@ -1,0 +1,101 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: qbittorrent
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: qbittorrent
+      version: 20.0.11
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: qbittorrent
+  values:
+    TZ: Asia/Yekaterinburg
+    credentials:
+      backup:
+        accessKey: ${VOLSYNC_ACCESS_KEY}
+        bucket: qbittorrent
+        encrKey: ${VOLSYNC_ENCR_KEY}
+        name: backup
+        path: ""
+        secretKey: ${VOLSYNC_SECRET_KEY}
+        type: s3
+        url: ${VOLSYNC_URL}
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: qbit.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: fiveoseven
+            enabled: true
+          homepage:
+            enabled: true
+            group: Arrs
+          traefik:
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: local-only
+                namespace: traefik
+    persistence:
+      config:
+        volsync:
+          - credentials: backup
+            name: vsync
+            dest:
+              enabled: true
+            src:
+              enabled: true
+            type: restic
+      media:
+        enabled: true
+        mountPath: /content/torrents
+        path: /mnt/big-one/media/torrents
+        readOnly: false
+        server: ${NFS_SERVER}
+        type: nfs
+      dist:
+        enabled: true
+        mountPath: /dist
+        path: /mnt/big-one/dist
+        readOnly: false
+        server: ${NFS_SERVER}
+        type: nfs
+      books:
+        enabled: true
+        mountPath: /books
+        path: /mnt/big-one/books
+        readOnly: false
+        server: ${NFS_SERVER}
+        type: nfs
+      flibusta-archive:
+        enabled: true
+        mountPath: /flibusta-archive
+        path: /mnt/big-one/flibusta-archive
+        readOnly: false
+        server: ${NFS_SERVER}
+        type: nfs
+    service:
+      torrent:
+        enabled: true
+        ports:
+          torrent:
+            # enabled: true
+            port: 28852
+            # protocol: tcp
+          # torrentudp:
+          #   enabled: true
+          #   port: "{{ .Values.service.torrent.ports.torrent.port }}"
+          #   protocol: udp
+        type: NodePort

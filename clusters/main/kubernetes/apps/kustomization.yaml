@@ -5,3 +5,17 @@ resources:
   - librespeed/ks.yaml
   - openspeedtest/ks.yaml
   - filebrowser/ks.yaml
+  - media
+  - cloudflared/ks.yaml
+  - flaresolverr/ks.yaml
+  - homepage/ks.yaml
+  - huginn-extr/ks.yaml
+  - jackett/ks.yaml
+  - jackett-lidarr/ks.yaml
+  - kms/ks.yaml
+  - metube/ks.yaml
+  - node-red/ks.yaml
+  - organizr/ks.yaml
+  - portainer-extr/ks.yaml
+  - prowlarr/ks.yaml
+  - three-x/ks.yaml

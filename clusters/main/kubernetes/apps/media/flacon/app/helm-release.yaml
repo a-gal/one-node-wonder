@@ -1,0 +1,117 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: flacon
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: common
+      version: 25.1.5
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: flacon
+  values:
+    image:
+      repository: ghcr.io/a-gal/docker-flacon
+      pullPolicy: IfNotPresent
+      tag: "11"
+    TZ: Asia/Yekaterinburg
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: flacon.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: fiveoseven
+            enabled: true
+          homepage:
+            enabled: false
+          traefik:
+            allowCors: false
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: local-only
+                namespace: traefik
+    resources:
+      limits:
+        cpu: 10000m
+        memory: 8Gi
+    service:
+      main:
+        enabled: true
+        # loadBalancerIP: ""
+        ports:
+          main:
+            enabled: true
+            port: 9058
+            protocol: http
+            targetPort: 9058
+        type: ClusterIP
+    persistence:
+      media:
+        enabled: true
+        mountPath: /mnt/media
+        path: /mnt/big-one/media
+        readOnly: false
+        server: ${NFS_SERVER}
+        type: nfs
+
+    securityContext:
+      # -- Container security context for all containers
+      # Can be overruled per container
+      container:
+        runAsUser: 0
+        runAsGroup: 0
+        readOnlyRootFilesystem: false
+        # allowPrivilegeEscalation: false
+        privileged: true
+        # seccompProfile:
+        #   type: RuntimeDefault
+        # capabilities:
+        #   add: []
+        #   drop:
+        #     - ALL
+        #   # When set to false, it will automatically
+        #   # add CHOWN, SETUID, SETGID, FOWNER, DAC_OVERRIDE
+        #   # capabilities ONLY when container runs as ROOT
+        #   disableS6Caps: false
+        # -- PUID for all containers
+        # Can be overruled per container
+        PUID: 568
+        # -- UMASK for all containers
+        # Can be overruled per container
+        # UMASK: "0022"
+
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                USER_ID: "568"
+                GROUP_ID: "568"
+              probes:
+                liveness:
+                  enabled: true
+                  path: /
+                  type: tcp
+                readiness:
+                  enabled: true
+                  path: /
+                  type: tcp
+                startup:
+                  enabled: true
+                  path: /
+                  type: tcp
+        replicas: 1
+        type: Deployment
