@@ -19,3 +19,4 @@ spec:
     service:
       main:
         type: NodePort
+        nodePort: 1688

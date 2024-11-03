@@ -93,9 +93,10 @@ spec:
           torrent:
             # enabled: true
             port: 28852
+            nodePort: 28852
             # protocol: tcp
-          # torrentudp:
-          #   enabled: true
-          #   port: "{{ .Values.service.torrent.ports.torrent.port }}"
-          #   protocol: udp
+          torrentudp:
+            # port: "{{ .Values.service.torrent.ports.torrent.port }}"
+            # protocol: udp
+            nodePort: 28852
         type: NodePort
