@@ -1,0 +1,84 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: audiobookshelf
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: audiobookshelf
+      version: 10.1.3
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: audiobookshelf
+  values:
+    TZ: Asia/Yekaterinburg
+    credentials:
+      backup:
+        accessKey: ${VOLSYNC_ACCESS_KEY}
+        bucket: audiobookshelf-config
+        encrKey: ${VOLSYNC_ENCR_KEY}
+        name: backup
+        path: ""
+        secretKey: ${VOLSYNC_SECRET_KEY}
+        type: s3
+        url: ${VOLSYNC_URL}
+      backup-meta:
+        accessKey: ${VOLSYNC_ACCESS_KEY}
+        bucket: audiobookshelf-meta
+        encrKey: ${VOLSYNC_ENCR_KEY}
+        name: backup-meta
+        path: ""
+        secretKey: ${VOLSYNC_SECRET_KEY}
+        type: s3
+        url: ${VOLSYNC_URL}
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: abooks.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: fiveoseven
+            enabled: true
+          homepage:
+            enabled: true
+            group: Media
+          traefik:
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: local-only
+                namespace: traefik
+    persistence:
+      audiobooks:
+        enabled: true
+        mountPath: /audiobooks
+        path: /mnt/big-one/media/torrents/audiobooks
+        server: ${NFS_SERVER}
+        type: nfs
+      config:
+        volsync:
+          - credentials: backup
+            dest:
+              enabled: true
+            name: backup
+            src:
+              enabled: true
+            type: restic
+      metadata:
+        volsync:
+          - credentials: backup-meta
+            dest:
+              enabled: true
+            name: backup-meta
+            src:
+              enabled: true
+            type: restic

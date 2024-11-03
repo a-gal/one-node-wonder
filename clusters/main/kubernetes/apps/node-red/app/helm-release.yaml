@@ -1,0 +1,61 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: node-red
+  namespace: node-red
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: node-red
+      version: 19.0.10
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: node-red
+  values:
+    TZ: Asia/Yekaterinburg
+    credentials:
+      backup:
+        accessKey: ${VOLSYNC_ACCESS_KEY}
+        bucket: node-red
+        encrKey: ${VOLSYNC_ENCR_KEY}
+        name: backup
+        path: ""
+        secretKey: ${VOLSYNC_SECRET_KEY}
+        type: s3
+        url: ${VOLSYNC_URL}
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: node-red.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        ingressClassName: ""
+        integrations:
+          certManager:
+            certificateIssuer: fiveoseven
+            enabled: true
+          homepage:
+            enabled: false
+          traefik:
+            allowCors: false
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: local-only
+                namespace: traefik
+    persistence:
+      data:
+        volsync:
+          - credentials: backup
+            dest:
+              enabled: true
+            name: backup
+            src:
+              enabled: true
+            type: restic

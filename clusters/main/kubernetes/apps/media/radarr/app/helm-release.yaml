@@ -1,0 +1,67 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: radarr
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: radarr
+      version: 22.2.4
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: radarr
+  values:
+    TZ: Asia/Yekaterinburg
+    credentials:
+      backup:
+        accessKey: ${VOLSYNC_ACCESS_KEY}
+        bucket: radarr
+        encrKey: ${VOLSYNC_ENCR_KEY}
+        name: backup
+        path: ""
+        secretKey: ${VOLSYNC_SECRET_KEY}
+        type: s3
+        url: ${VOLSYNC_URL}
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: radarr.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: fiveoseven
+            enabled: true
+          homepage:
+            enabled: true
+            category: Arrs
+          traefik:
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: local-only
+                namespace: traefik
+    persistence:
+      config:
+        volsync:
+          - credentials: backup
+            name: backup
+            dest:
+              enabled: true
+            src:
+              enabled: true
+            type: restic
+      media:
+        enabled: true
+        mountPath: /content
+        path: /mnt/big-one/media
+        readOnly: false
+        server: ${NFS_SERVER}
+        type: nfs

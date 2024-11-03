@@ -1,0 +1,90 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: navidrome
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: navidrome
+      version: 20.1.5
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: navidrome
+  values:
+    TZ: Asia/Yekaterinburg
+    addons:
+      codeserver:
+        enabled: false
+      netshoot:
+        enabled: false
+      vpn:
+        type: disabled
+    credentials:
+      backup:
+        accessKey: ${VOLSYNC_ACCESS_KEY}
+        bucket: navidrome
+        encrKey: ${VOLSYNC_ENCR_KEY}
+        name: backup
+        path: ""
+        secretKey: ${VOLSYNC_SECRET_KEY}
+        type: s3
+        url: ${VOLSYNC_URL}
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: music.***REMOVED***
+            paths:
+              - path: /
+                pathType: Prefix
+          - host: music.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        ingressClassName: ""
+        integrations:
+          certManager:
+            certificateIssuer: fiveoseven
+            enabled: true
+          homepage:
+            enabled: true
+            category: Media
+          traefik:
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: local-only
+                namespace: traefik
+    persistence:
+      data:
+        volsync:
+          - credentials: backup
+            dest:
+              enabled: true
+            name: backup
+            src:
+              enabled: true
+            type: restic
+      music:
+        path: /mnt/big-one/media/media/music
+        server: ${NFS_SERVER}
+        type: nfs
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                ND_ENABLETRANSCODINGCONFIG: false
+                ND_LASTFM_ENABLED: "true"
+                ND_LASTFM_LANGUAGE: ru
+                ND_LASTFM_APIKEY: ${ND_LASTFM_APIKEY}
+                ND_LASTFM_SECRET: ${ND_LASTFM_SECRET}
+                ND_MUSICFOLDER: /music
+                ND_SPOTIFY_ID: ${ND_SPOTIFY_ID}
+                ND_SPOTIFY_SECRET: ${ND_SPOTIFY_SECRET}
