@@ -67,23 +67,27 @@ spec:
             port: 8888
             protocol: tcp
             targetPort: 8888
+            nodePort: 8888
           main:
             enabled: true
             port: 2053
             protocol: http
             targetPort: 2053
+            nodePort: 2053
           socks-tcp:
             enabled: true
             name: socks-tcp
             port: 1080
             protocol: tcp
             targetPort: 1080
+            nodePort: 1080
           socks-udp:
             enabled: true
             name: socks-udp
             port: 1080
             protocol: udp
             targetPort: 1080
+            nodePort: 1080
         type: NodePort
     persistence:
       config:
