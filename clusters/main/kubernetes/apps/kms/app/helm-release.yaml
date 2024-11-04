@@ -18,6 +18,6 @@ spec:
     TZ: Asia/Yekaterinburg
     service:
       main:
-        loadBalancerIP: ${TRAEFIK_IP}
+        loadBalancerIP: ${EXTRA_LB_IP}
         type: LoadBalancer
-        sharedKey: traefik-ip-sharedkey
+        sharedKey: shared-ip-key
