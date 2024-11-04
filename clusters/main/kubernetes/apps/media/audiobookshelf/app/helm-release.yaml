@@ -20,7 +20,7 @@ spec:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
         bucket: audiobookshelf-config
-        encrKey: "##${VOLSYNC_ENCR_KEY_1}${VOLSYNC_ENCR_KEY_2}"
+        encrKey: "${VOLSYNC_ENCR_KEY_1//F/#}${VOLSYNC_ENCR_KEY_2}"
         name: backup
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
@@ -29,7 +29,7 @@ spec:
       backup-meta:
         accessKey: ${VOLSYNC_ACCESS_KEY}
         bucket: audiobookshelf-meta
-        encrKey: "##${VOLSYNC_ENCR_KEY_1}${VOLSYNC_ENCR_KEY_2}"
+        encrKey: "${VOLSYNC_ENCR_KEY_1//F/#}${VOLSYNC_ENCR_KEY_2}"
         name: backup-meta
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
