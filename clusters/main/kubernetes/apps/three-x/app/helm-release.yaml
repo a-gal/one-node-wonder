@@ -60,8 +60,8 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: ${TRAEFIK_IP}
-        sharedKey: traefik-ip-sharedkey
+        loadBalancerIP: ${EXTRA_LB_IP}
+        sharedKey: shared-ip-key
         ports:
           http-proxy:
             enabled: true

@@ -88,10 +88,10 @@ spec:
         type: nfs
     service:
       torrent:
-        loadBalancerIP: ${TRAEFIK_IP}
+        loadBalancerIP: ${EXTRA_LB_IP}
         enabled: true
         type: LoadBalancer
-        sharedKey: traefik-ip-sharedkey
+        sharedKey: shared-ip-key
         ports:
           torrent:
             # enabled: true

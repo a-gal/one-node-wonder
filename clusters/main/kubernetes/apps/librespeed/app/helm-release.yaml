@@ -34,6 +34,7 @@ spec:
         enabled: true
         type: LoadBalancer
         loadBalancerIP: ${EXTRA_LB_IP}
+        sharedKey: shared-ip-key
     ingress:
       main:
         enabled: true
