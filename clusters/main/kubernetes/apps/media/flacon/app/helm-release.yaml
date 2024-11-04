@@ -88,6 +88,7 @@ spec:
         # -- PUID for all containers
         # Can be overruled per container
         PUID: 568
+        fsGroup: 568
         # -- UMASK for all containers
         # Can be overruled per container
         # UMASK: "0022"
@@ -97,9 +98,6 @@ spec:
         podSpec:
           containers:
             main:
-              env:
-                USER_ID: "568"
-                GROUP_ID: "568"
               probes:
                 liveness:
                   enabled: true
