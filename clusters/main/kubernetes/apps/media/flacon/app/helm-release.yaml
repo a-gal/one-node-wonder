@@ -53,9 +53,9 @@ spec:
         ports:
           main:
             enabled: true
-            port: 9058
+            port: 5800
             protocol: http
-            targetPort: 9058
+            targetPort: 5800
         type: ClusterIP
     persistence:
       media:
