@@ -17,6 +17,8 @@ spec:
     secretRef:
       name: sops-age
   postBuild:
+    substitute: 
+      quote: '"'
     substituteFrom:
       - kind: ConfigMap
         name: cluster-config
@@ -32,6 +34,8 @@ spec:
             secretRef:
               name: sops-age
           postBuild:
+            substitute: 
+              quote: '"'
             substituteFrom:
               - kind: ConfigMap
                 name: cluster-config
