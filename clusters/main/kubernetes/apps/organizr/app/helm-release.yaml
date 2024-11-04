@@ -49,22 +49,22 @@ spec:
             middlewares:
               - name: local-only
                 namespace: traefik
-    persistence:
-      config:
-        volsync:
-          - credentials: backup
-            dest:
-              enabled: true
-            name: backup
-            src:
-              enabled: true
-            type: restic
-      data:
-        volsync:
-          - credentials: backup
-            dest:
-              enabled: true
-            name: backup-data
-            src:
-              enabled: true
-            type: restic
+    # persistence:
+      # config:
+      #   volsync:
+      #     - credentials: backup
+      #       dest:
+      #         enabled: true
+      #       name: backup
+      #       src:
+      #         enabled: true
+      #       type: restic
+      # data:
+      #   volsync:
+      #     - credentials: backup
+      #       dest:
+      #         enabled: true
+      #       name: backup-data
+      #       src:
+      #         enabled: true
+      #       type: restic
