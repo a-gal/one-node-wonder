@@ -20,7 +20,7 @@ spec:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
         bucket: lidarr
-        encrKey: "\"${VOLSYNC_ENCR_KEY_1:1}${VOLSYNC_ENCR_KEY_2}\""
+        encrKey: "${quote}${VOLSYNC_ENCR_KEY_1:1}${VOLSYNC_ENCR_KEY_2}${quote}"
         name: backup
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
