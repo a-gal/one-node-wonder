@@ -88,15 +88,15 @@ spec:
         type: nfs
     service:
       torrent:
+        loadBalancerIP: ${TRAEFIK_IP}
         enabled: true
         ports:
           torrent:
             # enabled: true
             port: 28852
-            nodePort: 28852
+            # nodePort: 28852
             # protocol: tcp
-          torrentudp:
+          # torrentudp:
             # port: "{{ .Values.service.torrent.ports.torrent.port }}"
             # protocol: udp
-            nodePort: 28852
-        type: NodePort
+            # nodePort: 28852
