@@ -90,6 +90,8 @@ spec:
       torrent:
         loadBalancerIP: ${TRAEFIK_IP}
         enabled: true
+        type: LoadBalancer
+        sharedKey: traefik-ip-sharedkey
         ports:
           torrent:
             # enabled: true

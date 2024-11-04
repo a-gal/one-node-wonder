@@ -19,3 +19,5 @@ spec:
     service:
       main:
         loadBalancerIP: ${TRAEFIK_IP}
+        type: LoadBalancer
+        sharedKey: traefik-ip-sharedkey
