@@ -20,7 +20,7 @@ spec:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
         bucket: prowlarr
-        encrKey: '${VOLSYNC_ENCR_KEY_1/que/"}${VOLSYNC_ENCR_KEY_2/que/"}'
+        encrKey: "${VOLSYNC_ENCR_KEY}"
         name: backup
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
