@@ -74,7 +74,7 @@ spec:
         runAsGroup: 0
         readOnlyRootFilesystem: false
         # allowPrivilegeEscalation: false
-        privileged: true
+        # privileged: true
         # seccompProfile:
         #   type: RuntimeDefault
         # capabilities:
