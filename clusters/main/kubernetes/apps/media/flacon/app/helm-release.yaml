@@ -73,6 +73,7 @@ spec:
         runAsUser: 0
         runAsGroup: 0
         readOnlyRootFilesystem: false
+        runAsNonRoot: false
         # allowPrivilegeEscalation: false
         # privileged: true
         # seccompProfile:
