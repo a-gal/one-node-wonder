@@ -50,9 +50,12 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: ${TRAEFIK_DB_IP}
+        loadBalancerIP: ${TRAEFIK_IP}
+        sharedKey: traefik-ip-sharedkey
       tcp:
         loadBalancerIP: ${TRAEFIK_IP}
+        type: LoadBalancer
+        sharedKey: traefik-ip-sharedkey
         externalTrafficPolicy: Local
         ports:
           web:
