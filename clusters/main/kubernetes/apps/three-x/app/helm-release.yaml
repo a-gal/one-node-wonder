@@ -59,7 +59,9 @@ spec:
     service:
       main:
         enabled: true
+        type: LoadBalancer
         loadBalancerIP: ${TRAEFIK_IP}
+        sharedKey: traefik-ip-sharedkey
         ports:
           http-proxy:
             enabled: true
@@ -84,7 +86,6 @@ spec:
             port: 1080
             protocol: udp
             targetPort: 1080
-        # type: NodePort
     persistence:
       config:
         enabled: true
