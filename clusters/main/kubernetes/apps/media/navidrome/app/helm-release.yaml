@@ -53,6 +53,11 @@ spec:
           homepage:
             enabled: true
             group: Media
+            widget:
+              custom:
+                user: ${NAVIDROME_USER}
+                token: ${NAVIDROME_TOKEN}
+                salt: ${NAVIDROME_SALT}
           traefik:
             enabled: true
             entrypoints:

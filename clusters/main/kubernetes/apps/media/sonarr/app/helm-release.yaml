@@ -41,6 +41,9 @@ spec:
           homepage:
             enabled: true
             group: Arrrelated
+            widget:
+              custom:
+                key: ${SONARR_API_KEY}
           traefik:
             enabled: true
             entrypoints:
