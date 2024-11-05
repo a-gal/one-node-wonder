@@ -34,13 +34,13 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-        ingressClassName: ""
         integrations:
           certManager:
             certificateIssuer: fiveoseven
             enabled: true
           homepage:
-            enabled: false
+            enabled: true
+            group: Automation
           traefik:
             allowCors: false
             enabled: true

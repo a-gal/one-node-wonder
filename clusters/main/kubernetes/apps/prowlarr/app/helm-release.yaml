@@ -40,7 +40,7 @@ spec:
             enabled: true
           homepage:
             enabled: true
-            group: Arrs
+            group: Arrrelated
           traefik:
             enabled: true
             entrypoints:

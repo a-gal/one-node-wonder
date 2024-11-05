@@ -40,7 +40,8 @@ spec:
             certificateIssuer: fiveoseven
             enabled: true
           homepage:
-            enabled: false
+            enabled: true
+            group: Arrrelated
           traefik:
             allowCors: false
             enabled: true

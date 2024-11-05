@@ -45,6 +45,14 @@ spec:
         cert-manager.io/private-key-rotation-policy: Always
         traefik.ingress.kubernetes.io/router.tls: 'true'
         traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd,traefik-local-only@kubernetescrd
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: Weave GitOps
+        gethomepage.dev/group: Administration
+        gethomepage.dev/icon: si-git
+        gethomepage.dev/name: Weave GitOps
+        # gethomepage.dev/widget.type: ""
+        # gethomepage.dev/widget.url: "https://gitops.${LOCAL_DOMAIN}"
+        gethomepage.dev/pod-selector: ""
       tls:
         - hosts:
             - gitops.${LOCAL_DOMAIN}

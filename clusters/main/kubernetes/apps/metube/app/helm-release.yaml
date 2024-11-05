@@ -41,6 +41,8 @@ spec:
           homepage:
             enabled: true
             group: Media
+            widget:
+              enabled: false
           traefik:
             enabled: true
             entrypoints:

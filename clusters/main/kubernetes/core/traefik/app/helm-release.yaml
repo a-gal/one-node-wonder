@@ -91,6 +91,9 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: fiveoseven
+          homepage:
+            enabled: true
+            group: Administration
 
         hosts:
           - host: traefik-dash.${LOCAL_DOMAIN}
