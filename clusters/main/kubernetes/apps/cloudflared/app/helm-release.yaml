@@ -23,4 +23,4 @@ spec:
           containers:
             main:
               env:
-                TUNNEL_TOKEN: eyJhIjoiY2U5M2I3Mzk2ODA5M2MxYzk1ZTRhMGE2YjcxNDAzODUiLCJ0IjoiYTlhYzVmNWUtMDk1Ny00ZThjLWE2MmItNmRhOWM1YTY5MjBhIiwicyI6IlpXTTFORGhsWlRjdE1XUTNaaTAwWVdVMUxUZzFNMlF0WlRaaVl6TTRPVGs0T1RVMSJ9
+                TUNNEL_TOKEN: ${CLOUDFLARED_TOKEN}
