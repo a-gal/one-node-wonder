@@ -44,7 +44,10 @@ spec:
             certificateIssuer: fiveoseven
           homepage:
             enabled: true
-            group: Adminisration
+            name: Kubernetes Dashboard
+            group: Administration
+            widget:
+              enabled: false
         hosts:
           - host: kubedash.${LOCAL_DOMAIN}
             paths:

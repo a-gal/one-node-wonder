@@ -41,6 +41,8 @@ spec:
           homepage:
             enabled: true
             group: Arrrelated
+            widget:
+              enabled: false
           traefik:
             allowCors: false
             enabled: true

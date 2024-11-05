@@ -50,6 +50,8 @@ spec:
           homepage:
             enabled: true
             group: Arrrelated
+            widget:
+              enabled: false
         hosts:
           - host: files.${LOCAL_DOMAIN}
             paths:

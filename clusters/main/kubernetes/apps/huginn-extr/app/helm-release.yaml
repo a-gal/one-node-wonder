@@ -27,9 +27,6 @@ spec:
           certManager:
             certificateIssuer: fiveoseven
             enabled: true
-          homepage:
-            enabled: true
-            group: Util
           traefik:
             enabled: true
             entrypoints:
@@ -37,12 +34,12 @@ spec:
             middlewares:
               - name: cloud-only
                 namespace: traefik
-            homepage:
-              enabled: true
-              name: Huginn (external)
-              group: Automation
-              widget:
-                enabled: false
+          homepage:
+            enabled: true
+            name: Huginn (external)
+            group: Automation
+            widget:
+              enabled: false
     service:
       main:
         enabled: true
