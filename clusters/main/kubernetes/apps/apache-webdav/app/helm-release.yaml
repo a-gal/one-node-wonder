@@ -1,0 +1,55 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: apache-webdav
+  namespace: apache-webdav
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: apache-webdav
+      version: 7.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: apache-webdav
+  values:
+    TZ: Asia/Yekaterinburg
+    persistence:
+      data:
+        type: nfs
+        server: ${NFS_SERVER}
+        path: /mnt/big-one/duplicati-backups
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          traefik:
+            enabled: true
+            middlewares:
+              - name: local-only
+                namespace: traefik
+          certManager:
+            enabled: true
+            certificateIssuer: fiveoseven
+        hosts:
+          - host: wdav.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                # ANONYMOUS_METHODS: ""
+                # AUTH_TYPE: Basic
+                LOCATION: /duplicatibackups
+                PASSWORD: ${WEBDAV_PASSWORD}
+                # PUMASK: "0000"
+                # REALM: WebDAV-Login
+                # SERVER_NAMES: localhost
+                # SSL_CERT: ""
+                USERNAME: ${WEBDAV_USER}

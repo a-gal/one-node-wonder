@@ -19,3 +19,4 @@ resources:
   - portainer-extr/ks.yaml
   - prowlarr/ks.yaml
   - three-x/ks.yaml
+  - apache-webdav/ks.yaml
