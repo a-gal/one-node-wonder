@@ -36,7 +36,7 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-          - host: jf.***REMOVED***
+          - host: jf.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -45,14 +45,11 @@ spec:
             certificateIssuer: fiveoseven
             enabled: true
           homepage:
-            description: ""
             enabled: true
             group: Media
-            icon: ""
-            name: "Jellyfin"
             widget:
               custom:
-                key: 0cde7ffa756c4e66ab54fed3f5e9679b
+                key: ${JELLYFIN_API_KEY}
               enabled: true
           traefik:
             enabled: true

@@ -47,6 +47,9 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: fiveoseven
+          homepage:
+            enabled: true
+            group: Arrrelated
         hosts:
           - host: files.${LOCAL_DOMAIN}
             paths:

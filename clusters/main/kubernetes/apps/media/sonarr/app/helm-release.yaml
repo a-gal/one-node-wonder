@@ -39,7 +39,8 @@ spec:
             certificateIssuer: fiveoseven
             enabled: true
           homepage:
-            enabled: false
+            enabled: true
+            group: Arrrelated
           traefik:
             enabled: true
             entrypoints:

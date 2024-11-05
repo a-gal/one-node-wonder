@@ -39,7 +39,9 @@ spec:
             certificateIssuer: fiveoseven
             enabled: true
           homepage:
-            enabled: false
+            enabled: true
+            name: Jackett (for Lidarr)
+            group: Arrrelated
           traefik:
             enabled: true
             entrypoints:

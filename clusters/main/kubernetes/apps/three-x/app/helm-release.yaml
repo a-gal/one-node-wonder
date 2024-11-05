@@ -43,7 +43,11 @@ spec:
             certificateIssuer: fiveoseven
             enabled: true
           homepage:
-            enabled: false
+            enabled: true
+            name: 3X-UI Panel
+            group: Administration
+            widget:
+              enabled: false
           traefik:
             allowCors: false
             enabled: true

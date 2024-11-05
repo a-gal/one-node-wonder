@@ -19,7 +19,7 @@ spec:
       main:
         enabled: true
         hosts:
-          - host: huginn.***REMOVED***
+          - host: huginn.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -37,6 +37,12 @@ spec:
             middlewares:
               - name: cloud-only
                 namespace: traefik
+            homepage:
+              enabled: true
+              name: Huginn (external)
+              group: Automation
+              widget:
+                enabled: false
     service:
       main:
         enabled: true

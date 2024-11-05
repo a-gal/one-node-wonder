@@ -29,7 +29,9 @@ spec:
             certificateIssuer: fiveoseven
             enabled: true
           homepage:
-            enabled: false
+            enabled: true
+            name: Portainer (external)
+            group: Administration
           traefik:
             allowCors: false
             enabled: true

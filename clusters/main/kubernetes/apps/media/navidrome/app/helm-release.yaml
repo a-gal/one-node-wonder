@@ -37,7 +37,7 @@ spec:
       main:
         enabled: true
         hosts:
-          - host: music.***REMOVED***
+          - host: music.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -52,7 +52,7 @@ spec:
             enabled: true
           homepage:
             enabled: true
-            category: Media
+            group: Media
           traefik:
             enabled: true
             entrypoints:
