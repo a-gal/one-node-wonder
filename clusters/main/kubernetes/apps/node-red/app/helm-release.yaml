@@ -41,6 +41,8 @@ spec:
           homepage:
             enabled: true
             group: Automation
+            widget:
+              enabled: false
           traefik:
             allowCors: false
             enabled: true

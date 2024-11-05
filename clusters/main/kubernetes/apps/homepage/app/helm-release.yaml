@@ -51,6 +51,18 @@ spec:
             - search:
                 provider: duckduckgo
                 target: _blank
+          
+          services.yaml: |
+            ---
+            # For configuration options and examples, please see:
+            # https://gethomepage.dev/latest/configs/services
+            - Media: []
+            - Arrrelated: []
+            - Administration:
+              - Truenas:
+                - href: https://truenas.${BASE_DOMAIN}/
+                  icon: "truenas.png"
+            - Automation: []
         enabled: true
     ingress:
       main:

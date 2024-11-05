@@ -32,6 +32,8 @@ spec:
             enabled: true
             name: Portainer (external)
             group: Administration
+            widget:
+              enabled: false
           traefik:
             allowCors: false
             enabled: true
