@@ -78,8 +78,10 @@ spec:
         # privileged: true
         # seccompProfile:
         #   type: RuntimeDefault
-        # capabilities:
-        #   add: []
+        capabilities:
+          add:
+            - NET_BIND_SERVICE
+            - KILL
         #   drop:
         #     - ALL
         #   # When set to false, it will automatically
