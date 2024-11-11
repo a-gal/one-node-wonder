@@ -24,10 +24,7 @@ spec:
             # For configuration options and examples, please see:
             # https://gethomepage.dev/latest/configs/bookmarks
 
-            - Util:
-                - Truenas:
-                    - abbr: TNS
-                      href: https://truenas.${BASE_DOMAIN}/
+            - Util: []
           custom.css: ""
           custom.js: ""
           settings.yaml: |
@@ -62,8 +59,9 @@ spec:
             - Administration:
               - Truenas:
                   href: https://truenas.${BASE_DOMAIN}/
-                  icon: "truenas.png"
+                  icon: si-truenas
                   description: The Old Home
+                  siteMonitor: https://truenas.${BASE_DOMAIN}/
             - Automation: []
         enabled: true
     ingress:
