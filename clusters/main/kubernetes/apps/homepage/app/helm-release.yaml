@@ -56,12 +56,14 @@ spec:
             ---
             # For configuration options and examples, please see:
             # https://gethomepage.dev/latest/configs/services
+
             - Media: []
             - Arrrelated: []
             - Administration:
               - Truenas:
-                - href: https://truenas.${BASE_DOMAIN}/
+                  href: https://truenas.${BASE_DOMAIN}/
                   icon: "truenas.png"
+                  description: The Old Home
             - Automation: []
         enabled: true
     ingress:
