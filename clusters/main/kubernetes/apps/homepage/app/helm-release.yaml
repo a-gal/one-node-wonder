@@ -16,6 +16,34 @@ spec:
   releaseName: homepage
   values:
     TZ: Asia/Yekaterinburg
+    workload:
+  main:
+    podSpec:
+      initContainers:
+        init-config:
+          command:
+            - /bin/sh
+            - -c
+            - |
+              mkdir -p /app/config
+              echo "Using bookmarks.yaml from helm release"
+              cp -f /dummy-config/bookmarks.yaml /app/config/bookmarks.yaml
+              echo "Config file copied"
+              echo "Using services.yaml from helm release"
+              cp -f /dummy-config/services.yaml /app/config/services.yaml
+              echo "Config file copied"
+              echo "Using settings.yaml from helm release"
+              cp -f /dummy-config/settings.yaml /app/config/settings.yaml
+              echo "Config file copied"
+              echo "Using widgets.yaml from helm release"
+              cp -f /dummy-config/widgets.yaml /app/config/widgets.yaml
+              echo "Config file copied"
+              echo "Using custom.css from helm release"
+              cp -f /dummy-config/custom.css /app/config/custom.css
+              echo "Config file copied"
+              echo "Using custom.js from helm release"
+              cp -f /dummy-config/custom.js /app/config/custom.js
+              echo "Config file copied"
     configmap:
       config:
         data:
