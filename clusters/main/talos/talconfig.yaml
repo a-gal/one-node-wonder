@@ -60,6 +60,8 @@ controlPlane:
                     - siderolabs/util-linux-tools
                     - siderolabs/iscsi-tools
                     - siderolabs/qemu-guest-agent
+                    - siderolabs/nonfree-kmod-nvidia-production
+                    - siderolabs/nvidia-container-toolkit-production
     machineFiles:
     - content: |
         [plugins."io.containerd.grpc.v1.cri"]
@@ -103,6 +105,8 @@ worker:
                     - siderolabs/util-linux-tools
                     - siderolabs/iscsi-tools
                     - siderolabs/qemu-guest-agent
+                    - siderolabs/nonfree-kmod-nvidia-production
+                    - siderolabs/nvidia-container-toolkit-production
     machineFiles:
     - content: |
         [plugins."io.containerd.grpc.v1.cri"]
