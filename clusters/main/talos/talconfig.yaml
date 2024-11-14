@@ -47,6 +47,10 @@ controlPlane:
      - name: nvme_tcp
      - name: vfio_pci
      - name: uio_pci_generic
+     - name: nvidia
+     - name: nvidia_uvm
+     - name: nvidia_drm
+     - name: nvidia_modeset
     schematic:
         customization:
             extraKernelArgs:
@@ -88,6 +92,10 @@ worker:
      - name: nvme_tcp
      - name: vfio_pci
      - name: uio_pci_generic
+     - name: nvidia
+     - name: nvidia_uvm
+     - name: nvidia_drm
+     - name: nvidia_modeset
     schematic:
         customization:
             systemExtensions:
