@@ -6,6 +6,7 @@ metadata:
 spec:
   interval: 15m
   releaseName: nvidia-device-plugin
+  runtimeClassName: nvidia
   chart:
     spec:
       chart: nvidia-device-plugin
