@@ -16,29 +16,30 @@ spec:
         namespace: flux-system
   install:
     createNamespace: true
-    crds: CreateReplace
     remediation:
       retries: 3
   upgrade:
     cleanupOnFail: true
-    crds: CreateReplace
     remediation:
       retries: 3
   values:
-    # runtimeClassName: nvidia
+    runtimeClassName: nvidia
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: feature.node.kubernetes.io/pci-0300_10de.present
+                  operator: In
+                  values:
+                    - "true"
     config:
       map:
         default: |-
           version: v1
-          flags:
-            migStrategy: none
           sharing:
             timeSlicing:
+              renameByDefault: false
               resources:
-              - name: nvidia.com/gpu
-                replicas: 5
-      default: default
-    # gfd:
-    #   enabled: true
-    # nfd:
-    #   enabled: false
+                - name: nvidia.com/gpu
+                  replicas: 4
