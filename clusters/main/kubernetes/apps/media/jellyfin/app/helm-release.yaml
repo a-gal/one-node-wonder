@@ -78,7 +78,7 @@ spec:
     resources:
       limits:
         cpu: 8000m
-        # nvidia.com/gpu: 1
+        nvidia.com/gpu: 1
     updated: true
     workload:
       main:
