@@ -24,6 +24,7 @@ spec:
       retries: 3
   values:
     runtimeClassName: nvidia
+
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -42,4 +43,4 @@ spec:
               renameByDefault: false
               resources:
                 - name: nvidia.com/gpu
-                  replicas: 5
+                  replicas: 4
