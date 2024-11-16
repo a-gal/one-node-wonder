@@ -71,6 +71,8 @@ controlPlane:
           discard_unpacked_layers = false
         [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
           discard_unpacked_layers = false
+        [plugins."io.containerd.cri.v1.runtime".containerd]
+          default_runtime_name = "nvidia"  
       permissions: 0
       path: /etc/cri/conf.d/20-customization.part
       op: create
@@ -86,13 +88,6 @@ controlPlane:
       permissions: 420
       path: /etc/nfsmount.conf
       op: overwrite
-    - content: |
-        [plugins]
-          [plugins."io.containerd.cri.v1.runtime"]
-            [plugins."io.containerd.cri.v1.runtime".containerd]
-              default_runtime_name = "nvidia"        
-      path: /etc/cri/conf.d/20-customization.part
-      op: create
 
 worker:
     patches:
