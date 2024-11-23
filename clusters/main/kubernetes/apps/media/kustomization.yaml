@@ -10,4 +10,3 @@ resources:
   - qbittorrent/ks.yaml
   - radarr/ks.yaml
   - sonarr/ks.yaml
-  - universal-media-server/ks.yaml
