@@ -88,12 +88,14 @@ spec:
         type: nfs
       legacy-library:
         type: nfs
+        enabled: true
         readOnly: false
         path: /mnt/big-one/photo-archive/legacy-library
         mountPath: /mnt/legacy-library
         server: ${NFS_SERVER}      
       older-library:
         type: nfs
+        enabled: true
         readOnly: false
         path: /mnt/big-one/photo/originals
         mountPath: /mnt/older-library
