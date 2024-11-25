@@ -92,14 +92,24 @@ spec:
         readOnly: false
         path: /mnt/big-one/photo-archive/legacy-library
         mountPath: /mnt/legacy-library
-        server: ${NFS_SERVER}      
+        server: ${NFS_SERVER}
+        targetSelector:
+          main:
+            main: {}
+          microservices:
+            microservices: {}
       older-library:
         type: nfs
         enabled: true
         readOnly: false
         path: /mnt/big-one/photo/originals
         mountPath: /mnt/older-library
-        server: ${NFS_SERVER}        
+        server: ${NFS_SERVER}
+        targetSelector:
+          main:
+            main: {}
+          microservices:
+            microservices: {}
     # cnpg: # gotta learn how to backup this
     resources:
       limits:
