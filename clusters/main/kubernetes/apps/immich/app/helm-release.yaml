@@ -47,6 +47,9 @@ spec:
           homepage:
             enabled: true
             group: Media
+            widget:
+              key: ${IMMICH_API_KEY}
+              version: 2
           traefik:
             allowCors: false
             enabled: true
