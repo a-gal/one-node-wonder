@@ -8,4 +8,7 @@ resources:
   - ./flux.yaml
   - ./upgradesettings.yaml
   - ./namespace.yaml
+  - ./webhook-reciever.yaml
+  - ./webhook-secret.yaml
+  - ./webhook-ingress.yaml
   # - sopssecret.secret.yaml
