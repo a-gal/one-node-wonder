@@ -59,3 +59,10 @@ spec:
         path: /mnt/big-one/photo/originals
         mountPath: /mnt/older-library
         server: ${NFS_SERVER}
+      immich-library:
+        type: nfs
+        enabled: true
+        readOnly: false
+        path: /mnt/big-one/immich-photos
+        mountPath: /mnt/immich-library
+        server: ${NFS_SERVER}
