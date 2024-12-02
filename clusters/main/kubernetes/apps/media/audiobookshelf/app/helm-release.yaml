@@ -50,6 +50,8 @@ spec:
           homepage:
             enabled: true
             group: Media
+            widget:
+              key: ${AUDIOBOOKSHELF_API_KEY}
           traefik:
             enabled: true
             entrypoints:
