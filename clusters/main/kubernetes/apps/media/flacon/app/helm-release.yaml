@@ -49,7 +49,6 @@ spec:
     service:
       main:
         enabled: true
-        # loadBalancerIP: ""
         ports:
           main:
             enabled: true
@@ -61,7 +60,7 @@ spec:
       media:
         enabled: true
         mountPath: /mnt/media
-        path: /mnt/big-one/media
+        path: /mnt/wide-one/media
         readOnly: false
         server: ${NFS_SERVER}
         type: nfs

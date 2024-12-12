@@ -76,7 +76,7 @@ spec:
               enabled: true
             type: restic
       music:
-        path: /mnt/big-one/media/media/music
+        path: /mnt/wide-one/media/media/music
         server: ${NFS_SERVER}
         type: nfs
     workload:

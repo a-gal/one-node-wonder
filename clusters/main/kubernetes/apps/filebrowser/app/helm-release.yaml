@@ -34,7 +34,7 @@ spec:
         enabled: true
         type: nfs
         server: ${NFS_SERVER}
-        path: /mnt/big-one/media
+        path: /mnt/wide-one/media
     ingress:
       main:
         enabled: true

@@ -61,14 +61,14 @@ spec:
       media:
         enabled: true
         mountPath: /content/torrents
-        path: /mnt/big-one/media/torrents
+        path: /mnt/wide-one/media/torrents
         readOnly: false
         server: ${NFS_SERVER}
         type: nfs
       dist:
         enabled: true
         mountPath: /dist
-        path: /mnt/big-one/dist
+        path: /mnt/wide-one/dist
         readOnly: false
         server: ${NFS_SERVER}
         type: nfs
@@ -83,6 +83,14 @@ spec:
         enabled: true
         mountPath: /flibusta-archive
         path: /mnt/big-one/flibusta-archive
+        readOnly: false
+        server: ${NFS_SERVER}
+        type: nfs
+      #SMB-accessible for special cases
+      mediashare:
+        enabled: true
+        mountPath: /mediashare
+        path: /mnt/wide-one/mediashare
         readOnly: false
         server: ${NFS_SERVER}
         type: nfs

@@ -66,7 +66,7 @@ spec:
       media:
         enabled: true
         mountPath: /content
-        path: /mnt/big-one/media
+        path: /mnt/wide-one/media
         readOnly: false
         server: ${NFS_SERVER}
         type: nfs

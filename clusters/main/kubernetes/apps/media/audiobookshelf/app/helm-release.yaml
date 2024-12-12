@@ -63,7 +63,7 @@ spec:
       audiobooks:
         enabled: true
         mountPath: /audiobooks
-        path: /mnt/big-one/media/torrents/audiobooks
+        path: /mnt/wide-one/media/torrents/audiobooks
         server: ${NFS_SERVER}
         type: nfs
       config:
