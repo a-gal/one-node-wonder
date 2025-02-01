@@ -21,7 +21,7 @@ spec:
     credentials:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
-        bucket: jellyfin
+        bucket: backups.jellyfin
         encrKey: "${VOLSYNC_ENCR_KEY}"
         name: backup
         path: ""
@@ -59,15 +59,15 @@ spec:
               - name: cloud-only
                 namespace: traefik
     persistence:
-      # config:
-      #   volsync:
-      #     - credentials: backup
-      #       name: backup-config
-      #       dest:
-      #         enabled: true
-      #       src:
-      #         enabled: true
-      #       type: restic
+      config:
+        volsync:
+          - credentials: backup
+            name: backup
+            dest:
+              enabled: true
+            src:
+              enabled: true
+            type: restic
       media:
         enabled: true
         mountPath: /content/media

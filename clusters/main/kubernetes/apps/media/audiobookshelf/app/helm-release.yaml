@@ -19,18 +19,9 @@ spec:
     credentials:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
-        bucket: audiobookshelf-config
+        bucket: backups.audiobookshelf
         encrKey: "${VOLSYNC_ENCR_KEY}"
         name: backup
-        path: ""
-        secretKey: ${VOLSYNC_SECRET_KEY}
-        type: s3
-        url: ${VOLSYNC_URL}
-      backup-meta:
-        accessKey: ${VOLSYNC_ACCESS_KEY}
-        bucket: audiobookshelf-meta
-        encrKey: "${VOLSYNC_ENCR_KEY}"
-        name: backup-meta
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
         type: s3
@@ -69,18 +60,18 @@ spec:
       config:
         volsync:
           - credentials: backup
+            name: backup
             dest:
               enabled: true
-            name: backup
             src:
               enabled: true
             type: restic
       metadata:
         volsync:
-          - credentials: backup-meta
+          - credentials: backup
+            name: backup-meta
             dest:
               enabled: true
-            name: backup-meta
             src:
               enabled: true
             type: restic
