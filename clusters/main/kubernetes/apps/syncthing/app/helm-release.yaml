@@ -67,3 +67,20 @@ spec:
         enabled: true
         mountPath: /mnt/books
         readOnly: false
+    service:
+      listeners:
+        loadBalancerIP: ${EXTRA_LB_IP}
+        enabled: true
+        type: LoadBalancer
+        sharedKey: shared-ip-key
+      listeners-udp:
+        loadBalancerIP: ${EXTRA_LB_IP}
+        enabled: true
+        type: LoadBalancer
+        sharedKey: shared-ip-key
+      discovery:
+        loadBalancerIP: ${EXTRA_LB_IP}
+        enabled: true
+        type: LoadBalancer
+        sharedKey: shared-ip-key
+
