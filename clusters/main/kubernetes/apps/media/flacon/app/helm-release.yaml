@@ -18,7 +18,7 @@ spec:
     image:
       repository: ghcr.io/a-gal/docker-flacon
       pullPolicy: IfNotPresent
-      tag: "11"
+      tag: "12"
     TZ: Asia/Yekaterinburg
     ingress:
       main:
