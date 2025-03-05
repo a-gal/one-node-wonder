@@ -41,3 +41,7 @@ spec:
             src:
               enabled: true
             type: restic
+    resources:
+      limits:
+        cpu: 10000m
+        memory: 16Gi
