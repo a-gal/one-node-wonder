@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/refs/heads/main/helmrelease-helm-v2beta2.json
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -34,6 +34,7 @@ spec:
       selfSigned:
         enabled: true
         name: "selfsigned"
+      ## Remove these if you do NOT want to use clusterissuer
       ACME:
         - name: fiveoseven
           cfapitoken: "${CLOUDFLARE_TOKEN}"
@@ -45,3 +46,21 @@ spec:
           email: "${EMAIL}"
           server: https://acme-staging-v02.api.letsencrypt.org/directory
           type: cloudflare
+    ## Remove these if you do NOT want to use clusterissuer
+    clusterCertificates:
+      # Namespaces in which the certificates must be available
+      # Accepts comma-separated regex expressions
+      replicationNamespaces: '.*'
+      certificates:
+        - name: basedomain-wildcard
+          enabled: true
+          certificateIssuer: fiveoseven
+          hosts:
+            - ${BASE_DOMAIN}
+            - '*.${BASE_DOMAIN}'
+        - name: localdomain-wildcard
+          enabled: true
+          certificateIssuer: fiveoseven
+          hosts:
+            - ${LOCAL_DOMAIN}
+            - '*.${LOCAL_DOMAIN}'

@@ -70,12 +70,7 @@ controlPlane:
                     - siderolabs/nvidia-container-toolkit-production
     machineFiles:
     - content: |
-        [plugins."io.containerd.grpc.v1.cri"]
-          enable_unprivileged_ports = true
-          enable_unprivileged_icmp = true
-        [plugins."io.containerd.grpc.v1.cri".containerd]
-          discard_unpacked_layers = false
-        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+        [plugins."io.containerd.cri.v1.images"]
           discard_unpacked_layers = false
         [plugins."io.containerd.cri.v1.runtime".containerd]
           default_runtime_name = "nvidia"
@@ -86,11 +81,8 @@ controlPlane:
         [ NFSMount_Global_Options ]
         nfsvers=4.2
         hard=True
+        nconnect=16
         noatime=True
-        nodiratime=True
-        rsize=131072
-        wsize=131072
-        nconnect=8
       permissions: 420
       path: /etc/nfsmount.conf
       op: overwrite
@@ -117,12 +109,7 @@ worker:
                     - siderolabs/nvidia-container-toolkit-production
     machineFiles:
     - content: |
-        [plugins."io.containerd.grpc.v1.cri"]
-          enable_unprivileged_ports = true
-          enable_unprivileged_icmp = true
-        [plugins."io.containerd.grpc.v1.cri".containerd]
-          discard_unpacked_layers = false
-        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+        [plugins."io.containerd.cri.v1.images"]
           discard_unpacked_layers = false
       permissions: 0
       path: /etc/cri/conf.d/20-customization.part
@@ -131,11 +118,8 @@ worker:
         [ NFSMount_Global_Options ]
         nfsvers=4.2
         hard=True
+        nconnect=16
         noatime=True
-        nodiratime=True
-        rsize=131072
-        wsize=131072
-        nconnect=8
       permissions: 420
       path: /etc/nfsmount.conf
       op: overwrite
