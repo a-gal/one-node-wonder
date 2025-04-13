@@ -11,5 +11,8 @@
         "dependencyDashboardApproval": true
       }
     ]
-  }
+  },
+  "automergeSchedule": [
+    "* 22-23,0-3 * * *"
+  ]
 }
