@@ -7,4 +7,3 @@ resources:
   # keeping traefik for now
   - traefik/ks.yaml
   # - blocky/ks.yaml
-  - kyverno-policies/ks.yaml
