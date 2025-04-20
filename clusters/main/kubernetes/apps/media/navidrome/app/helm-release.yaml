@@ -63,7 +63,7 @@ spec:
             entrypoints:
               - websecure
             middlewares:
-              - name: local-only
+              - name: cloud-only
                 namespace: traefik
     persistence:
       data:
