@@ -12,7 +12,7 @@
       }
     ]
   },
-  "automergeSchedule": [
+  "schedule": [
     "* 22-23,0-3 * * *"
   ]
 }
