@@ -29,9 +29,9 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-values:
-  # magic?
-  workload:
-    main:
-      podSpec:
-        hostUsers: true
+  values:
+    # magic?
+    workload:
+      main:
+        podSpec:
+          hostUsers: true
