@@ -16,6 +16,11 @@ spec:
   releaseName: jackett-lidarr
   values:
     TZ: Asia/Yekaterinburg
+    # magic?
+    workload:
+      main:
+        podSpec:
+          hostUsers: true
     credentials:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
