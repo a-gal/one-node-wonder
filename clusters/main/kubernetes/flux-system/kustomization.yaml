@@ -4,3 +4,4 @@ resources:
   - flux
   - weave-gitops/ks.yaml
   - webhook/ks.yaml
+  - alerts
