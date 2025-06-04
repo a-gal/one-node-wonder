@@ -28,6 +28,15 @@ spec:
         secretKey: ${VOLSYNC_SECRET_KEY}
         type: s3
         url: ${VOLSYNC_URL}
+      backup-cnpg:
+        accessKey: ${VOLSYNC_ACCESS_KEY}
+        bucket: backups.immich.cnpg
+        encrKey: "${VOLSYNC_ENCR_KEY}"
+        name: backup-cnpg
+        path: ""
+        secretKey: ${VOLSYNC_SECRET_KEY}
+        type: s3
+        url: ${VOLSYNC_URL}
     ingress:
       main:
         enabled: true
@@ -113,7 +122,13 @@ spec:
             main: {}
           microservices:
             microservices: {}
-    # cnpg: # gotta learn how to backup this
+    cnpg:
+      main:
+        backups:
+          enabled: true
+          credentials: backup-cnpg
+        recovery:
+          credentials: backup-cnpg
     resources:
       limits:
         cpu: 8000m
