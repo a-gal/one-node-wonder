@@ -31,7 +31,5 @@ spec:
     keepHistory: false
   values:
     # magic?
-    workload:
-      main:
-        podSpec:
-          hostUsers: true
+    podOptions:
+      hostUsers: true

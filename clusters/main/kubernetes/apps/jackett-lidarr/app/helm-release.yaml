@@ -17,10 +17,8 @@ spec:
   values:
     TZ: Asia/Yekaterinburg
     # magic?
-    workload:
-      main:
-        podSpec:
-          hostUsers: true
+    podOptions:
+      hostUsers: true
     credentials:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
