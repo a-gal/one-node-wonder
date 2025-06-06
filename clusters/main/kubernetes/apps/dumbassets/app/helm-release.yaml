@@ -29,6 +29,15 @@ spec:
         secretKey: ${VOLSYNC_SECRET_KEY}
         type: s3
         url: ${VOLSYNC_URL}
+      backup-assets:
+        accessKey: ${VOLSYNC_ACCESS_KEY}
+        bucket: backups.dumbassets.assets
+        encrKey: "${VOLSYNC_ENCR_KEY}"
+        name: backup-assets
+        path: ""
+        secretKey: ${VOLSYNC_SECRET_KEY}
+        type: s3
+        url: ${VOLSYNC_URL}
     ingress:
       main:
         enabled: true
@@ -79,6 +88,20 @@ spec:
         volsync:
           - credentials: backup
             name: backup
+            dest:
+              enabled: true
+            src:
+              enabled: true
+            type: restic
+      assets:
+        enabled: true
+        mountPath: /app/public/assets/
+        readOnly: false
+        size: 128Gi
+        type: pvc
+        volsync:
+          - credentials: backup-assets
+            name: backup-assets
             dest:
               enabled: true
             src:
