@@ -24,3 +24,4 @@ resources:
   - czkawka/ks.yaml
   - syncthing/ks.yaml
   - satisfactory/ks.yaml
+  - dumbassets/ks.yaml
