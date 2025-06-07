@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: jackett
-      version: 23.3.114
+      version: 23.3.115
       sourceRef:
         kind: HelmRepository
         name: truecharts
