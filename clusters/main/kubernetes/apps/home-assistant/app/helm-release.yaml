@@ -87,6 +87,8 @@ spec:
           homepage:
             enabled: true
             group: Automation
+            widget:
+              key: ${HA_API_KEY}
     addons:
       codeserver:
         enabled: true
