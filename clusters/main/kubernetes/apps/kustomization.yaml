@@ -25,3 +25,4 @@ resources:
   - syncthing/ks.yaml
   - satisfactory/ks.yaml
   - dumbassets/ks.yaml
+  - home-assistant/ks.yaml
