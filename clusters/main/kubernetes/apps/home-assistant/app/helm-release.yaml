@@ -71,6 +71,10 @@ spec:
       main:
         enabled: true
         hosts:
+          - host: ha.${BASE_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
           - host: ha.${LOCAL_DOMAIN}
             paths:
               - path: /
@@ -79,7 +83,7 @@ spec:
           traefik:
             enabled: true
             middlewares:
-              - name: local-only
+              - name: cloud-only
                 namespace: traefik
           certManager:
             enabled: true
