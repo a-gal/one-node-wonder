@@ -1,0 +1,66 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: wyoming-whisper-gpu
+  namespace: wyoming-whisper-gpu
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 14.5.3
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  values:
+    TZ: Asia/Yekaterinburg
+    image:
+      repository: ghcr.io/slackr31337/wyoming-whisper-gpu
+      pullPolicy: IfNotPresent
+      tag: v2025.01.4
+    service:
+      main:
+        enabled: true
+        type: ClusterIP
+        ports:
+          main:
+            enabled: true
+            port: 10300
+            protocol: tcp
+            targetPort: 10300
+    persistence:
+      model:
+        enabled: true
+        mountPath: /data/
+        readOnly: false
+        size: 128Gi
+        type: pvc
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                MODEL: deepdml/faster-whisper-large-v3-turbo-ct2
+                LANGUAGE: ru
+                COMPUTE_TYPE: float16
+                BEAM_SIZE: 0
+              probes:
+                liveness:
+                  enabled: true
+                  path: /
+                  type: tcp
+                readiness:
+                  enabled: true
+                  path: /
+                  type: tcp
+                startup:
+                  enabled: true
+                  path: /
+                  type: tcp
+        replicas: 1
+        type: Deployment

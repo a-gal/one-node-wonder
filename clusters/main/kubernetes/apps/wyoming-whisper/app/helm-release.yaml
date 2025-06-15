@@ -19,6 +19,3 @@ spec:
       language: ru
       model: deepdml/faster-whisper-large-v3-turbo-ct2
       beam_size: 1
-    resources:
-      limits:
-        nvidia.com/gpu: 1
