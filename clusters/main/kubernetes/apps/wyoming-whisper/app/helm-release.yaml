@@ -17,7 +17,7 @@ spec:
     TZ: Asia/Yekaterinburg
     wyoming_whisper:
       language: ru
-      model: distil-large-v3
+      model: dvislobokov/whisper-large-v3-turbo-russian
       beam_size: 1
     resources:
       limits:
