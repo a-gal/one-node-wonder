@@ -47,7 +47,7 @@ spec:
               env:
                 MODEL: deepdml/faster-whisper-large-v3-turbo-ct2
                 LANGUAGE: ru
-                COMPUTE_TYPE: float16
+                # COMPUTE_TYPE: float16
                 BEAM_SIZE: 0
               probes:
                 liveness:
