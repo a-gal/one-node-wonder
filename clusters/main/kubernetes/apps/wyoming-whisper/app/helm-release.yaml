@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: wyoming-whisper
+  namespace: wyoming-whisper
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: wyoming-whisper
+      version: 7.7.1
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  values:
+    TZ: Asia/Yekaterinburg
+    wyoming_whisper:
+      language: ru
+      model: turbo
+      beam_size: 1
+    resources:
+      limits:
+        nvidia.com/gpu: 1
