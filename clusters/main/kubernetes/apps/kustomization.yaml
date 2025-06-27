@@ -27,4 +27,4 @@ resources:
   - dumbassets/ks.yaml
   - home-assistant/ks.yaml
   - wyoming-whisper-gpu/ks.yaml
-  - mosquitto/ks.yaml
+  # - mosquitto/ks.yaml
