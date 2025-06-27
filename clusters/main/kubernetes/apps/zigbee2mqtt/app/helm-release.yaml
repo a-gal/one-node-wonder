@@ -1,0 +1,99 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: zigbee2mqtt
+  namespace: zigbee2mqtt
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: zigbee2mqtt
+      version: 14.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: zigbee2mqtt
+  values:
+    TZ: Asia/Yekaterinburg
+    credentials:
+      backup:
+        accessKey: ${VOLSYNC_ACCESS_KEY}
+        bucket: backups.zigbee2mqtt
+        encrKey: "${VOLSYNC_ENCR_KEY}"
+        name: backup
+        path: ""
+        secretKey: ${VOLSYNC_SECRET_KEY}
+        type: s3
+        url: ${VOLSYNC_URL}
+    persistence:
+      data:
+        volsync:
+          - credentials: backup
+            dest:
+              enabled: true
+            name: backup
+            src:
+              enabled: true
+            type: restic
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: z2m.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: fiveoseven
+            enabled: true
+          homepage:
+            enabled: true
+            group: Automation
+          traefik:
+            allowCors: false
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: local-only
+                namespace: traefik
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                USE_CUSTOM_CONFIG_FILE: true
+    addons:
+      codeserver:
+        enabled: true
+        container:
+          resources:
+            limits:
+              cpu: 3333m
+              memory: 3333Mi
+        service:
+          enabled: true
+          ports:
+            codeserver:
+              enabled: true
+              port: 12345
+              targetPort: 12345
+        ingress:
+          enabled: true
+          integrations:
+            traefik:
+              enabled: true
+              middlewares:
+                - name: local-only
+                  namespace: traefik
+            certManager:
+              enabled: true
+              certificateIssuer: fiveoseven
+          hosts:
+            - host: code.z2m.${LOCAL_DOMAIN}
+              paths:
+                - path: /
+                  pathType: Prefix
