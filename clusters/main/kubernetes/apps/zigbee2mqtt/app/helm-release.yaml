@@ -65,7 +65,7 @@ spec:
           containers:
             main:
               env:
-                USE_CUSTOM_CONFIG_FILE: true
+                USE_CUSTOM_CONFIG_FILE: false
     addons:
       codeserver:
         enabled: true
