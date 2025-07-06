@@ -67,6 +67,11 @@ spec:
           credentials: backup-cnpg
         recovery:
           credentials: backup-cnpg
+        cluster:
+          storage:
+            size: "256Gi"
+          walStorage:
+            size: "256Gi"
     ingress:
       main:
         enabled: true
