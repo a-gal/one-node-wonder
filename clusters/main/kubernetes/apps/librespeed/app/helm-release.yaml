@@ -39,7 +39,7 @@ spec:
       traefik:
         local-only:
           enabled: true
-          type: ipWhiteList
+          type: ip-allow-list
           data:
             sourceRange:
               - 192.168.0.0/16
