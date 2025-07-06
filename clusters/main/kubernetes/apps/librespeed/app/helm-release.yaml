@@ -38,6 +38,7 @@ spec:
     ingressMiddlewares:
       traefik:
         local-only:
+          enabled: true
           type: ipWhiteList
           data:
             sourceRange:
