@@ -18,9 +18,8 @@ spec:
     TZ: Asia/Yekaterinburg
     service:
       main:
-        loadBalancerIP: ${EXTRA_LB_IP}
+        loadBalancerIP: ${SATISFACTORY_LB_IP}
         type: LoadBalancer
-        sharedKey: shared-ip-key
         ports:
           messaging:
             enabled: true
