@@ -21,6 +21,11 @@ spec:
         loadBalancerIP: ${EXTRA_LB_IP}
         type: LoadBalancer
         sharedKey: shared-ip-key
+        ports:
+          messaging:
+            enabled: true
+            port: 8888
+            protocol: tcp
     credentials:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
