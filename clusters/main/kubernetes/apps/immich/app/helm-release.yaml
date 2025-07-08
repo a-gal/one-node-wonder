@@ -19,6 +19,10 @@ spec:
     TZ: Asia/Yekaterinburg
     immich:
       mlImageType: mlCudaImage
+    workload:
+      machinelearning:
+        podSpec:
+          runtimeClassName: "nvidia"
     credentials:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}

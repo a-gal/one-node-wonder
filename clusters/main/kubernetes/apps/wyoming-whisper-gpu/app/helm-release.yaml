@@ -42,6 +42,7 @@ spec:
     workload:
       main:
         podSpec:
+          runtimeClassName: "nvidia"
           containers:
             main:
               env:
