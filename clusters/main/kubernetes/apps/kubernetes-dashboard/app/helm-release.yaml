@@ -55,7 +55,11 @@ spec:
     service:
       main:
         type: LoadBalancer
-        loadBalancerIP: ${DASHBOARD_IP}
+        integration:
+          metallb:
+            enabled: true
+            sharedKey: shared-ip-key
+            loadBalancerIP: ${DASHBOARD_IP}
         ports:
           main:
             port: 80

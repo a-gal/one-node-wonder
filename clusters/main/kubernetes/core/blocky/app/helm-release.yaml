@@ -36,7 +36,11 @@ spec:
     service:
       dns:
         externalTrafficPolicy: Local
-        loadBalancerIP: ${BLOCKY_IP}
+        integration:
+          metallb:
+            enabled: true
+            sharedKey: shared-ip-key
+            loadBalancerIP: ${BLOCKY_IP}
         type: LoadBalancer
     k8sgateway:
       # -- list of processed domains

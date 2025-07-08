@@ -91,10 +91,12 @@ spec:
         type: nfs
     service:
       torrent:
-        loadBalancerIP: ${EXTRA_LB_IP}
         enabled: true
         type: LoadBalancer
-        sharedKey: shared-ip-key
+        integration:
+          metallb:
+            loadBalancerIP: ${EXTRA_LB_IP}
+            sharedKey: shared-ip-key
         ports:
           torrent:
             # enabled: true

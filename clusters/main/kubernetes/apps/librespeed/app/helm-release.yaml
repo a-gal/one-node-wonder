@@ -36,8 +36,8 @@ spec:
           metallb:
             enabled: true
             sharedKey: shared-ip-key
+            loadBalancerIP: ${EXTRA_LB_IP}
         type: LoadBalancer
-        loadBalancerIP: ${EXTRA_LB_IP}
     ingress:
       main:
         enabled: true
