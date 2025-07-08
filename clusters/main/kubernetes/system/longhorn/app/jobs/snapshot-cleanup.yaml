@@ -5,9 +5,9 @@ metadata:
   namespace: longhorn-system
 spec:
   concurrency: 1
-  cron: 30 7 * * *
+  cron: 0 7 * * *
   groups:
-  - default
+    - default
   name: cleanup
   retain: 0
   task: snapshot-cleanup

@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -40,6 +41,7 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: external
         hosts:
           - host: immich.${BASE_DOMAIN}
             paths:
@@ -59,14 +61,6 @@ spec:
             widget:
               key: ${IMMICH_API_KEY}
               version: 2
-          traefik:
-            allowCors: false
-            enabled: true
-            entrypoints:
-              - websecure
-            middlewares:
-              - name: cloud-only
-                namespace: traefik
     persistence:
       library:
         path: /mnt/big-one/immich-photos/library

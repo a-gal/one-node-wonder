@@ -7,5 +7,5 @@ resources:
   - flux-system
   - kube-system
   # commented out before nginx migration
-  # - networking
+  - networking
   - system

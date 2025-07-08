@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -36,6 +37,7 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: external
         hosts:
           - host: music.${BASE_DOMAIN}
             paths:
@@ -45,7 +47,6 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-        ingressClassName: ""
         integrations:
           certManager:
             certificateIssuer: fiveoseven
@@ -58,13 +59,6 @@ spec:
                 user: ${NAVIDROME_USER}
                 token: ${NAVIDROME_TOKEN}
                 salt: ${NAVIDROME_SALT}
-          traefik:
-            enabled: true
-            entrypoints:
-              - websecure
-            middlewares:
-              - name: cloud-only
-                namespace: traefik
     persistence:
       data:
         volsync:

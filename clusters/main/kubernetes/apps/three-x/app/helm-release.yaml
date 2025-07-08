@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -33,6 +34,7 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: internal
         hosts:
           - host: 3x-ui.${LOCAL_DOMAIN}
             paths:
@@ -48,14 +50,6 @@ spec:
             group: Administration
             widget:
               enabled: false
-          traefik:
-            allowCors: false
-            enabled: true
-            entrypoints:
-              - websecure
-            middlewares:
-              - name: local-only
-                namespace: traefik
     resources:
       limits:
         cpu: 2000m

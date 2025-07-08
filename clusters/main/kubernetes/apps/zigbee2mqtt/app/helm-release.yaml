@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -39,6 +40,7 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: internal
         hosts:
           - host: z2m.${LOCAL_DOMAIN}
             paths:
@@ -51,14 +53,6 @@ spec:
           homepage:
             enabled: true
             group: Automation
-          traefik:
-            allowCors: false
-            enabled: true
-            entrypoints:
-              - websecure
-            middlewares:
-              - name: local-only
-                namespace: traefik
     workload:
       main:
         podSpec:
@@ -83,12 +77,8 @@ spec:
               targetPort: 12345
         ingress:
           enabled: true
+          ingressClassName: internal
           integrations:
-            traefik:
-              enabled: true
-              middlewares:
-                - name: local-only
-                  namespace: traefik
             certManager:
               enabled: true
               certificateIssuer: fiveoseven

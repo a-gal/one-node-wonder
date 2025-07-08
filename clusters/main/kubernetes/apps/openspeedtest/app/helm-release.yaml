@@ -32,12 +32,8 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: internal
         integrations:
-          traefik:
-            enabled: true
-            middlewares:
-              - name: local-only
-                namespace: traefik
           certManager:
             enabled: true
             certificateIssuer: fiveoseven

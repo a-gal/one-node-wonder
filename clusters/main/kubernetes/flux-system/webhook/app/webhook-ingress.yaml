@@ -4,12 +4,10 @@ metadata:
   name: webhook-receiver
   namespace: flux-system
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: fiveoseven
     cert-manager.io/private-key-rotation-policy: Always
-    traefik.ingress.kubernetes.io/router.tls: 'true'
-    traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd,traefik-cloud-only@kubernetescrd
 spec:
+  ingressClassName: external
   rules:
   - host: flux-webhook.${BASE_DOMAIN}
     http:

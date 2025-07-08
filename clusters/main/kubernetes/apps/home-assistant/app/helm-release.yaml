@@ -75,21 +75,13 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: external
         hosts:
           - host: ha.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
-          - host: ha.${LOCAL_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
         integrations:
-          traefik:
-            enabled: true
-            middlewares:
-              - name: cloud-only
-                namespace: traefik
           certManager:
             enabled: true
             certificateIssuer: fiveoseven
@@ -98,6 +90,23 @@ spec:
             group: Automation
             widget:
               key: ${HA_API_KEY}
+      local:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: ha.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: fiveoseven
+          # homepage:
+          #   enabled: true
+          #   group: Automation
+          #   widget:
+          #     key: ${HA_API_KEY}
     addons:
       codeserver:
         enabled: true
@@ -115,12 +124,8 @@ spec:
               targetPort: 12345
         ingress:
           enabled: true
+          ingressClassName: internal
           integrations:
-            traefik:
-              enabled: true
-              middlewares:
-                - name: local-only
-                  namespace: traefik
             certManager:
               enabled: true
               certificateIssuer: fiveoseven

@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -29,12 +30,12 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: internal
         hosts:
           - host: lidarr.${LOCAL_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
-        ingressClassName: ""
         integrations:
           certManager:
             certificateIssuer: fiveoseven
@@ -45,14 +46,6 @@ spec:
             widget:
               custom:
                 key: ${LIDARR_API_KEY}
-          traefik:
-            allowCors: false
-            enabled: true
-            entrypoints:
-              - websecure
-            middlewares:
-              - name: local-only
-                namespace: traefik
     persistence:
       config:
         volsync:
