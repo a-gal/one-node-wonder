@@ -18,10 +18,9 @@ spec:
     TZ: Asia/Yekaterinburg
     service:
       main:
-        integration:
+        integrations:
           metallb:
             enabled: true
-            sharedKey: shared-ip-key
             loadBalancerIP: ${SATISFACTORY_LB_IP}
         type: LoadBalancer
         ports:

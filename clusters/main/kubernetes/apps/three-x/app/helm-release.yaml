@@ -58,7 +58,7 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
-        integration:
+        integrations:
           metallb:
             enabled: true
             sharedKey: shared-ip-key
