@@ -39,7 +39,7 @@ spec:
         integrations:
           metallb:
             enabled: true
-            loadBalancerIP: ${BLOCKY_IP}
+        loadBalancerIP: ${BLOCKY_IP}
         type: LoadBalancer
     k8sgateway:
       # -- list of processed domains

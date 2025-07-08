@@ -62,7 +62,7 @@ spec:
           metallb:
             enabled: true
             sharedKey: shared-ip-key
-            loadBalancerIP: ${EXTRA_LB_IP}
+        loadBalancerIP: ${EXTRA_LB_IP}
         ports:
           http-proxy:
             enabled: true

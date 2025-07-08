@@ -21,7 +21,7 @@ spec:
         integrations:
           metallb:
             enabled: true
-            loadBalancerIP: ${SATISFACTORY_LB_IP}
+        loadBalancerIP: ${SATISFACTORY_LB_IP}
         type: LoadBalancer
         ports:
           messaging:
