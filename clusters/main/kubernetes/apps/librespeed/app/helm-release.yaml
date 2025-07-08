@@ -32,9 +32,12 @@ spec:
     service:
       main:
         enabled: true
+        integration:
+          metallb:
+            enabled: true
+            sharedKey: shared-ip-key
         type: LoadBalancer
         loadBalancerIP: ${EXTRA_LB_IP}
-        sharedKey: shared-ip-key
     ingress:
       main:
         enabled: true

@@ -18,6 +18,9 @@ spec:
     TZ: Asia/Yekaterinburg
     service:
       main:
+        integration:
+          metallb:
+            enabled: true
+            sharedKey: shared-ip-key
         loadBalancerIP: ${EXTRA_LB_IP}
         type: LoadBalancer
-        sharedKey: shared-ip-key

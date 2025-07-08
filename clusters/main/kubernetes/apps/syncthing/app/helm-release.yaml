@@ -66,18 +66,27 @@ spec:
         readOnly: false
     service:
       listeners:
+        integration:
+          metallb:
+            enabled: true
+            sharedKey: shared-ip-key
         loadBalancerIP: ${EXTRA_LB_IP}
         enabled: true
         type: LoadBalancer
-        sharedKey: shared-ip-key
       listeners-udp:
+        integration:
+          metallb:
+            enabled: true
+            sharedKey: shared-ip-key
         loadBalancerIP: ${EXTRA_LB_IP}
         enabled: true
         type: LoadBalancer
-        sharedKey: shared-ip-key
       discovery:
+        integration:
+          metallb:
+            enabled: true
+            sharedKey: shared-ip-key
         loadBalancerIP: ${EXTRA_LB_IP}
         enabled: true
         type: LoadBalancer
-        sharedKey: shared-ip-key
 

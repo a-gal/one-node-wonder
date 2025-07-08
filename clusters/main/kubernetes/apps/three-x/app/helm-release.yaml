@@ -59,7 +59,10 @@ spec:
         enabled: true
         type: LoadBalancer
         loadBalancerIP: ${EXTRA_LB_IP}
-        sharedKey: shared-ip-key
+        integration:
+          metallb:
+            enabled: true
+            sharedKey: shared-ip-key
         ports:
           http-proxy:
             enabled: true
