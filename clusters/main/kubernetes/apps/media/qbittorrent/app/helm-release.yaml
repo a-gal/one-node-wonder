@@ -96,6 +96,7 @@ spec:
         loadBalancerIP: ${EXTRA_LB_IP}
         integrations:
           metallb:
+            enabled: true
             sharedKey: shared-ip-key
         ports:
           torrent:
