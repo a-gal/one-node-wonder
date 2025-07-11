@@ -127,6 +127,7 @@ spec:
           enabled: true
           credentials: backup-cnpg
         recovery:
+          enabled: true
           credentials: backup-cnpg
     resources:
       limits:
