@@ -123,8 +123,10 @@ spec:
             microservices: {}
     cnpg:
       main:
+        mode: recovery
         backups:
           enabled: true
+          revision: "1"
           credentials: backup-cnpg
         recovery:
           enabled: true
