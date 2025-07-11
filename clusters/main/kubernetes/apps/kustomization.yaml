@@ -20,7 +20,7 @@ resources:
   - prowlarr/ks.yaml
   - three-x/ks.yaml
   - apache-webdav/ks.yaml
-  # - immich/ks.yaml
+  - immich/ks.yaml
   - czkawka/ks.yaml
   - syncthing/ks.yaml
   - satisfactory/ks.yaml
