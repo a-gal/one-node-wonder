@@ -129,7 +129,6 @@ spec:
           revision: "1"
           credentials: backup-cnpg
         recovery:
-          enabled: true
           credentials: backup-cnpg
     resources:
       limits:
