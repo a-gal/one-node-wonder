@@ -80,7 +80,7 @@ spec:
         server: ${NFS_SERVER}
         type: nfs
       profile:
-        path: /mnt/fast-one/immich-cache/profile
+        path: /mnt/fast-one/immich-cache/profiles
         server: ${NFS_SERVER}
         type: nfs
       thumbs:
