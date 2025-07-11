@@ -79,20 +79,14 @@ spec:
         path: /mnt/big-one/immich-photos/backups
         server: ${NFS_SERVER}
         type: nfs
-      # profile: # ??? no idea
-        # volsync: # maybe?
-        #   - credentials: backup
-        #     dest:
-        #       enabled: true
-        #     name: backup
-        #     src:
-        #       enabled: true
-        #     type: restic
-      # keep thumbs in pvc
-      # thumbs: # or put them to hdd? ssd prolly better
-      #   path: /mnt/fast-one/immich-thumbs # todo: create
-      #   server: ${NFS_SERVER}
-      #   type: nfs
+      profile:
+        path: /mnt/fast-one/immich-cache/profile
+        server: ${NFS_SERVER}
+        type: nfs
+      thumbs:
+        path: /mnt/fast-one/immich-cache/thumbnails
+        server: ${NFS_SERVER}
+        type: nfs
       video:
         path: /mnt/big-one/immich-photos/video
         server: ${NFS_SERVER}
