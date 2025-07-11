@@ -63,7 +63,8 @@ spec:
             enabled: true
             group: Media
             widget:
-              key: ${IMMICH_API_KEY}
+              custom:
+                key: ${IMMICH_API_KEY}
               version: 2
     persistence:
       library:

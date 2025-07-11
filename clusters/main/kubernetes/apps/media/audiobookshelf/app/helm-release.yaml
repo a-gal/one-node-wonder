@@ -44,7 +44,8 @@ spec:
             enabled: true
             group: Media
             widget:
-              key: ${AUDIOBOOKSHELF_API_KEY}
+              custom:
+                key: ${AUDIOBOOKSHELF_API_KEY}
     persistence:
       audiobooks:
         enabled: true

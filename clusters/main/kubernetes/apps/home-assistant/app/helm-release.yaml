@@ -89,7 +89,8 @@ spec:
             enabled: true
             group: Automation
             widget:
-              key: ${HA_API_KEY}
+              custom:
+                key: ${HA_API_KEY}
       local:
         enabled: true
         ingressClassName: internal
