@@ -128,24 +128,3 @@ spec:
       limits:
         cpu: 8000m
         nvidia.com/gpu: 1
-    addons:
-      codeserver:
-        enabled: true
-        container:
-          resources:
-            limits:
-              cpu: 1000m
-              memory: 512Mi
-        ingress:
-          enabled: true
-          ingressClassName: internal
-          integrations:
-            certManager:
-              enabled: true
-              certificateIssuer: fiveoseven
-          hosts:
-            - host: code.immich.${LOCAL_DOMAIN}
-              paths:
-                - path: /
-                  pathType: Prefix
-
