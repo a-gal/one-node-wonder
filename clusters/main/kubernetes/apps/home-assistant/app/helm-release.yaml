@@ -114,15 +114,8 @@ spec:
         container:
           resources:
             limits:
-              cpu: 3333m
-              memory: 3333Mi
-        service:
-          enabled: true
-          ports:
-            codeserver:
-              enabled: true
-              port: 12345
-              targetPort: 12345
+              cpu: 1000m
+              memory: 512Mi
         ingress:
           enabled: true
           ingressClassName: internal
