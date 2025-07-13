@@ -89,6 +89,8 @@ spec:
         path: /mnt/big-one/immich-photos/video
         server: ${NFS_SERVER}
         type: nfs
+      mlcache:
+        type: pvc
       legacy-library:
         type: nfs
         enabled: true
