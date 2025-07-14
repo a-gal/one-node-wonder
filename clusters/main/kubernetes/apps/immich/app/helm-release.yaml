@@ -133,11 +133,6 @@ spec:
         enabled: true
         targetSelector:
           - machinelearning
-        container:
-          resources:
-            limits:
-              cpu: 1000m
-              memory: 512Mi
         ingress:
           enabled: true
           ingressClassName: internal
