@@ -131,8 +131,7 @@ spec:
     addons:
       codeserver:
         enabled: true
-        targetSelector:
-        - machinelearning
+        targetSelector: ["machinelearning"]
         ingress:
           enabled: true
           ingressClassName: internal
