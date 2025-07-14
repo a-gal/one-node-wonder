@@ -90,6 +90,13 @@ spec:
         server: ${NFS_SERVER}
         type: nfs
       mlcache:
+        targetSelector:
+          machinelearning:
+            machinelearning:
+              mountPath: /mlcache
+          main:
+            codeserver:
+              mountPath: /mlcache
         type: pvc
       legacy-library:
         type: nfs
@@ -131,7 +138,6 @@ spec:
     addons:
       codeserver:
         enabled: true
-        targetSelector: ["machinelearning"]
         ingress:
           enabled: true
           ingressClassName: internal
