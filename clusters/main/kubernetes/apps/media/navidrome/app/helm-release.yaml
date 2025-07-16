@@ -36,6 +36,14 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: fiveoseven
+            enabled: true
+      local:
+        enabled: true
+        ingressClassName: internal
+        hosts:
           - host: music.${LOCAL_DOMAIN}
             paths:
               - path: /
