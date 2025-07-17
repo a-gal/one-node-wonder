@@ -31,8 +31,6 @@ spec:
   values:
     ## set stopAll to "true" if you do not want to use blocky
     # and/or disable its service
-    global:
-      stopAll: true
     service:
       dns:
         externalTrafficPolicy: Local
@@ -44,10 +42,14 @@ spec:
     k8sgateway:
       # -- list of processed domains
       domains:
-      - domain: "${DOMAIN_0}"
+      - domain: "${BASE_DOMAIN}"
         # -- Optional configuration option for DNS01 challenge that will redirect all acme
         # challenge requests to external cloud domain (e.g. managed by cert-manager)
         # See: https://cert-manager.io/docs/configuration/acme/dns01/
+        dnsChallenge:
+          enabled: false
+          domain: dns01.clouddns.com
+      - domain: "${LOCAL_DOMAIN}"
         dnsChallenge:
           enabled: false
           domain: dns01.clouddns.com
@@ -59,6 +61,11 @@ spec:
         options:
           - name: tls_servername
             value: cloudflare-dns.com
+    defaultUpstreams:
+    - "https://1.1.1.1/dns-query"
+    bootstrapDns:
+      ips: []
+      upstream: "1.1.1.1"
 
     # CANNOT be defined in above yaml section
     queryLog:
