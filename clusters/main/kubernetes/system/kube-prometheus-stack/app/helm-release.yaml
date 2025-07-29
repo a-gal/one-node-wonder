@@ -107,7 +107,31 @@ spec:
               sourceLabels: ["__meta_kubernetes_pod_node_name"]
               targetLabel: kubernetes_node
     grafana:
-      enabled: false
+      enabled: true
       forceDeployDashboards: true
       defaultDashboardsEnabled: true
       forceDeployDatasources: true
+      grafana:
+      grafana.ini:
+        server:
+          root_url: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}https://{{ tpl (.Values.ingress.hosts | first) . }}{{ else }}''{{ end }}"
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: internal
+          cert-manager.io/cluster-issuer: fiveoseven
+          cert-manager.io/private-key-rotation-policy: Always
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Grafana
+          gethomepage.dev/group: Administration
+          gethomepage.dev/icon: grafana.png
+          gethomepage.dev/name: Grafana
+          # gethomepage.dev/widget.type: grafana
+          # gethomepage.dev/widget.url: "https://grafana.${LOCAL_DOMAIN}"
+          gethomepage.dev/pod-selector: ""
+        hosts:
+          - grafana.${LOCAL_DOMAIN}
+        tls:
+          - hosts:
+              - grafana.${LOCAL_DOMAIN}
+            secretName: grafana-tls
