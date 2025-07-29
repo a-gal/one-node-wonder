@@ -116,8 +116,8 @@ spec:
           root_url: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}https://{{ tpl (.Values.ingress.hosts | first) . }}{{ else }}''{{ end }}"
       ingress:
         enabled: true
+        ingressClassName: internal
         annotations:
-          kubernetes.io/ingress.class: internal
           cert-manager.io/cluster-issuer: fiveoseven
           cert-manager.io/private-key-rotation-policy: Always
           gethomepage.dev/enabled: "true"
