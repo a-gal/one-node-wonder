@@ -111,7 +111,6 @@ spec:
       forceDeployDashboards: true
       defaultDashboardsEnabled: true
       forceDeployDatasources: true
-      grafana:
       grafana.ini:
         server:
           root_url: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}https://{{ tpl (.Values.ingress.hosts | first) . }}{{ else }}''{{ end }}"
