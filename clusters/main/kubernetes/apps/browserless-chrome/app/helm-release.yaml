@@ -35,3 +35,10 @@ spec:
             main:
               env:
                 TOKEN: ${BRLESS_TOKEN}
+              probes:
+                liveness:
+                  path: /?token=${BRLESS_TOKEN}
+                readiness:
+                  path: /?token=${BRLESS_TOKEN}
+                startup:
+                  path: /?token=${BRLESS_TOKEN}
