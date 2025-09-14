@@ -29,3 +29,4 @@ resources:
   - wyoming-whisper-gpu/ks.yaml
   - mosquitto/ks.yaml
   # - zigbee2mqtt/ks.yaml
+  - browserless-chrome/ks.yaml
