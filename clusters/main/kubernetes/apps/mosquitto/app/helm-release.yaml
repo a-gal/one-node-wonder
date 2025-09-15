@@ -18,8 +18,6 @@ spec:
     TZ: Asia/Yekaterinburg
     auth:
       enabled: true
-    podOptions:
-      hostUsers: true
     credentials:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}

@@ -101,8 +101,6 @@ spec:
             src:
               enabled: true
             type: restic
-    podOptions:
-      hostUsers: true
     workload:
       main:
         podSpec:

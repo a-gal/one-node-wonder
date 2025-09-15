@@ -29,7 +29,3 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  values:
-    # magic?
-    podOptions:
-      hostUsers: true
