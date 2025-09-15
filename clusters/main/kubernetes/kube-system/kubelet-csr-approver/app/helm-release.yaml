@@ -15,3 +15,7 @@ spec:
         name: truecharts
         namespace: flux-system
       interval: 30m
+  values:
+    # magic?
+    podOptions:
+      hostUsers: true

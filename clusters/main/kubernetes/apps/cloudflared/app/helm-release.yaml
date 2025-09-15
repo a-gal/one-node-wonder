@@ -17,6 +17,8 @@ spec:
   values:
     TZ: Asia/Yekaterinburg
     release_name: cloudflared
+    podOptions:
+      hostUsers: true
     workload:
       main:
         podSpec:
