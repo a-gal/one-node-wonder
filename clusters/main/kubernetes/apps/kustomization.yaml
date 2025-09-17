@@ -30,3 +30,4 @@ resources:
   - mosquitto/ks.yaml
   # - zigbee2mqtt/ks.yaml
   - browserless-chrome/ks.yaml
+  - n8n/ks.yaml
