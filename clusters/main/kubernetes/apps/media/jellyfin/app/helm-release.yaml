@@ -54,15 +54,15 @@ spec:
                 key: ${JELLYFIN_API_KEY}
               enabled: true
     persistence:
-      # config:
-      #   volsync:
-      #     - credentials: backup
-      #       name: backup
-      #       dest:
-      #         enabled: true
-      #       src:
-      #         enabled: true
-      #       type: restic
+      config:
+        volsync:
+          - credentials: backup
+            name: backup
+            dest:
+              enabled: true
+            src:
+              enabled: true
+            type: restic
       media:
         enabled: true
         mountPath: /content/media
