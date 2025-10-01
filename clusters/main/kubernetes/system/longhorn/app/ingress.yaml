@@ -6,6 +6,13 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: fiveoseven
     cert-manager.io/private-key-rotation-policy: Always
+
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Longhorn administration UI
+    gethomepage.dev/group: Administration
+    gethomepage.dev/icon: longhorn.png
+    gethomepage.dev/name: Longhorn Dashboard
+    gethomepage.dev/pod-selector: ""
 spec:
   ingressClassName: internal
   rules:
