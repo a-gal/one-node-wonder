@@ -127,6 +127,7 @@ spec:
             microservices: {}
     cnpg:
       main:
+        type: vectorchord
         mode: recovery
         backups:
           enabled: true
