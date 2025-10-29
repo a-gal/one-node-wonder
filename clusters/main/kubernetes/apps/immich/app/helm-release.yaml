@@ -19,9 +19,6 @@ spec:
     TZ: Asia/Yekaterinburg
     immich:
       mlImageType: mlCudaImage
-    workload:
-      main:
-        replicas: 0
     podOptions:
       runtimeClassName: "nvidia"
     credentials:
