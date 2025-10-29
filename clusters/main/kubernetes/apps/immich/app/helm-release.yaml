@@ -19,7 +19,7 @@ spec:
     TZ: Asia/Yekaterinburg
     immich:
       mlImageType: mlCudaImage
-    workloads:
+    workload:
       main:
         replicas: 0
     podOptions:
