@@ -25,7 +25,5 @@ resources:
   - dumbassets/ks.yaml
   - home-assistant/ks.yaml
   - wyoming-whisper-gpu/ks.yaml
-  - mosquitto/ks.yaml
-  # - zigbee2mqtt/ks.yaml
   - browserless-chrome/ks.yaml
   - pgadmin/ks.yaml
