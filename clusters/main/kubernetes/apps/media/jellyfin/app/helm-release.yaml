@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: jellyfin
-      version: 21.12.9
+      version: 22.0.2
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -63,15 +63,15 @@ spec:
             src:
               enabled: true
             type: restic
-      # data:
-      #   volsync:
-      #     - credentials: backup
-      #       name: backup-data
-      #       dest:
-      #         enabled: true
-      #       src:
-      #         enabled: true
-      #       type: restic
+      data:
+        volsync:
+          - credentials: backup
+            name: backup-data
+            dest:
+              enabled: true
+            src:
+              enabled: true
+            type: restic
       media:
         enabled: true
         mountPath: /content/media
@@ -90,6 +90,20 @@ spec:
           runtimeClassName: "nvidia"
           containers:
             main:
+              command: read x < /dev/fd/1
+              probes:
+                liveness:
+                  enabled: true
+                  type: exec
+                  command: 'true'
+                readiness:
+                  enabled: true
+                  type: exec
+                  command: 'true'
+                startup:
+                  enabled: true
+                  type: exec
+                  command: 'true'
               env:
                 http_proxy: ${HTTP_PROXY}
                 https_proxy: ${HTTP_PROXY}
