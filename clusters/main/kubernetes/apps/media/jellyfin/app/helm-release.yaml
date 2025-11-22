@@ -90,7 +90,7 @@ spec:
           runtimeClassName: "nvidia"
           containers:
             main:
-              command: read x < /dev/fd/1
+              command: ["/bin/sh", "-c", "sleep infinity"]
               probes:
                 liveness:
                   enabled: true
