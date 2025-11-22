@@ -16,6 +16,8 @@ spec:
         namespace: flux-system
   releaseName: jellyfin
   values:
+    global:
+      stopAll: true
     TZ: Asia/Yekaterinburg
     autodiscovery:
       enabled: false
