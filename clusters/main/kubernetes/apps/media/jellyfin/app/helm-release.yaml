@@ -16,6 +16,28 @@ spec:
         namespace: flux-system
   releaseName: jellyfin
   values:
+    global:
+      stopAll: true
+    addons:
+      codeserver:
+        enabled: true
+        container:
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 512Mi
+        ingress:
+          enabled: true
+          ingressClassName: internal
+          integrations:
+            certManager:
+              enabled: true
+              certificateIssuer: fiveoseven
+          hosts:
+            - host: code.jf.${LOCAL_DOMAIN}
+              paths:
+                - path: /
+                  pathType: Prefix
     TZ: Asia/Yekaterinburg
     autodiscovery:
       enabled: false
