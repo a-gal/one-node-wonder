@@ -57,21 +57,21 @@ spec:
       config:
         volsync:
           - credentials: backup
-            name: backup-config
+            name: backup
             dest:
               enabled: true
             src:
               enabled: true
             type: restic
-      # data:
-      #   volsync:
-      #     - credentials: backup
-      #       name: backup
-      #       dest:
-      #         enabled: true
-      #       src:
-      #         enabled: true
-      #       type: restic
+      data:
+        volsync:
+          - credentials: backup
+            name: backup-data
+            dest:
+              enabled: true
+            src:
+              enabled: true
+            type: restic
       media:
         enabled: true
         mountPath: /content/media
