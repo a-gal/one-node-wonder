@@ -57,6 +57,15 @@ spec:
       config:
         volsync:
           - credentials: backup
+            name: backup-config
+            dest:
+              enabled: true
+            src:
+              enabled: true
+            type: restic
+      data:
+        volsync:
+          - credentials: backup
             name: backup
             dest:
               enabled: true
@@ -81,11 +90,6 @@ spec:
           runtimeClassName: "nvidia"
           containers:
             main:
-              command: yes
-              probes:
-                liveness: {}
-                readiness: {}
-                startup: {}
               env:
                 http_proxy: ${HTTP_PROXY}
                 https_proxy: ${HTTP_PROXY}
