@@ -81,7 +81,7 @@ spec:
           runtimeClassName: "nvidia"
           containers:
             main:
-              command: sleep infinity
+              command: cat
               probes:
                 liveness: {}
                 readiness: {}
