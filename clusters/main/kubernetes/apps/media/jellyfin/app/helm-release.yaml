@@ -83,7 +83,7 @@ spec:
             main:
               command: tail -f /dev/null
               probes:
-                liveliness: {}
+                liveness: {}
                 readiness: {}
                 startup: {}
               env:
