@@ -16,8 +16,6 @@ spec:
         namespace: flux-system
   releaseName: jellyfin
   values:
-    global:
-      stopAll: true
     addons:
       codeserver:
         enabled: true
@@ -99,6 +97,7 @@ spec:
     updated: true
     workload:
       main:
+        replicas: 0
         podSpec:
           runtimeClassName: "nvidia"
           containers:
