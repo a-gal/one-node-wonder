@@ -1,0 +1,71 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: elib-to-ebook
+  namespace: elib-to-ebook
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 15.1.10
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  values:
+    TZ: Asia/Yekaterinburg
+    image:
+      repository: onlyfart/elib2ebookweb
+      pullPolicy: IfNotPresent
+      tag: 2.7.4
+    service:
+      main:
+        enabled: true
+        type: ClusterIP
+        ports:
+          main:
+            enabled: true
+            port: 8080
+            protocol: tcp
+            targetPort: 8080
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: elib2ebook.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: fiveoseven
+            enabled: true
+          homepage:
+            enabled: true
+            icon: mdi-book-arrow-down-outline
+            name: Elib2Ebook Web
+            group: Media
+            widget:
+              enabled: false
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              probes:
+                liveness:
+                  enabled: true
+                  path: /
+                  type: tcp
+                readiness:
+                  enabled: true
+                  path: /
+                  type: tcp
+                startup:
+                  enabled: true
+                  path: /
+                  type: tcp
+        replicas: 1
+        type: Deployment
