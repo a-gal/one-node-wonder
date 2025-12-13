@@ -54,6 +54,8 @@ spec:
         podSpec:
           containers:
             main:
+              env:
+                COMPlus_EnableDiagnostics: 0
               probes:
                 liveness:
                   enabled: true
