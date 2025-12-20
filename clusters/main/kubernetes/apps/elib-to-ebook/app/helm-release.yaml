@@ -46,6 +46,7 @@ spec:
             enabled: true
             icon: mdi-book-arrow-down-outline
             name: Elib2Ebook Web
+            description: Инструмент для сохранения любой доступной книги с сайтов в форматах epub, fb2, cbz
             group: Media
             widget:
               enabled: false

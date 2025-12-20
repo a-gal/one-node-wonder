@@ -32,6 +32,7 @@ spec:
           homepage:
             enabled: true
             name: Portainer (external)
+            description: Lightweight service delivery platform for containerized applications that can be used to manage Docker
             group: Administration
             widget:
               enabled: false

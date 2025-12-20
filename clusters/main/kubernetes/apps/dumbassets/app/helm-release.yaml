@@ -55,6 +55,7 @@ spec:
           homepage:
             enabled: true
             name: DumbAssets
+            description: A Stupid Simple Asset Tracker
             group: Automation
             widget:
               enabled: false

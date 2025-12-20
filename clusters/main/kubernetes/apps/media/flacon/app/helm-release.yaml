@@ -35,7 +35,12 @@ spec:
             certificateIssuer: fiveoseven
             enabled: true
           homepage:
-            enabled: false
+            enabled: true
+            group: Arrrelated
+            name: Flacon
+            description: Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks.
+            widget:
+              enabled: false
     resources:
       limits:
         cpu: 10000m
