@@ -16,6 +16,11 @@ spec:
   releaseName: satisfactory
   values:
     TZ: Asia/Yekaterinburg
+    workload:
+      main:
+        podSpec:
+          nodeSelector:
+            node-type: high-performance
     service:
       main:
         integrations:
