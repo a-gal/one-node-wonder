@@ -99,8 +99,8 @@ nodes:
             ip: ${VIP}
       nodeLabels:
         node-type: high-performance
-      patches:
-        - '@./patches/nvidia.yaml'
+#      patches:
+#        - '@./patches/nvidia.yaml'
       schematic:
         customization:
           extraKernelArgs:
@@ -109,8 +109,8 @@ nodes:
             officialExtensions:
               - siderolabs/util-linux-tools
               - siderolabs/iscsi-tools
-              - siderolabs/nonfree-kmod-nvidia-production
-              - siderolabs/nvidia-container-toolkit-production
+#              - siderolabs/nonfree-kmod-nvidia-production
+#              - siderolabs/nvidia-container-toolkit-production
 
 controlPlane:
     patches:
