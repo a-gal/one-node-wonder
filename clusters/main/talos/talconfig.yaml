@@ -3,13 +3,15 @@ clusterName: ${CLUSTERNAME}
 talosVersion: v1.11.6
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
 kubernetesVersion: v1.34.3
-endpoint: https://${VIP}:6443
+endpoint: https://${MASTER1IP}:6443
 allowSchedulingOnControlPlanes: true
 additionalMachineCertSans:
     - 127.0.0.1
+    - ${MASTER1IP}
     - ${VIP}
 additionalApiServerCertSans:
     - 127.0.0.1
+    - ${MASTER1IP}
     - ${VIP}
 # Warning: Also used in Cilium CNI values!
 clusterPodNets:
@@ -40,11 +42,79 @@ nodes:
               gateway: ${GATEWAY}
           vip:
             ip: ${VIP}
+      nodeLabels:
+        storage-connection: direct
+      schematic:
+        customization:
+          extraKernelArgs:
+            - net.ifnames=0
+          systemExtensions:
+            officialExtensions:
+              - siderolabs/util-linux-tools
+              - siderolabs/iscsi-tools
+              - siderolabs/qemu-guest-agent
+              - siderolabs/nonfree-kmod-nvidia-production
+              - siderolabs/nvidia-container-toolkit-production
       patches:
         - '@./patches/nvidia.yaml'
+
+    - hostname: k8s-control-pure-2
+      ipAddress: ${MASTER2IP_IP}
+      controlPlane: true
+      nameservers:
+        - 1.1.1.1
+        - 8.8.8.8
+      installDiskSelector:
+        size: ">= 100GB"
+      networkInterfaces:
+        # suffix is the adapter mac adres.
+        - interface: eth0
+          addresses:
+            - ${MASTER2IP_CIDR}
+          routes:
+            - network: 0.0.0.0/0
+              gateway: ${GATEWAY}
+          vip:
+            ip: ${VIP}
+      patches:
+        - '@./patches/pure-controlplane.yaml'
+
+    - hostname: k8s-control-3-highperf
+      ipAddress: ${MASTER3IP_IP}
+      controlPlane: true
+      nameservers:
+        - 1.1.1.1
+        - 8.8.8.8
+      installDiskSelector:
+        size: ">= 100GB"
+      networkInterfaces:
+        # suffix is the adapter mac adres.
+        - interface: eth0
+          addresses:
+            - ${MASTER3IP_CIDR}
+          routes:
+            - network: 0.0.0.0/0
+              gateway: ${GATEWAY}
+          vip:
+            ip: ${VIP}
+      nodeLabels:
+        node-type: high-performance
+      patches:
+        - '@./patches/nvidia.yaml'
+      schematic:
+        customization:
+          extraKernelArgs:
+            - net.ifnames=0
+          systemExtensions:
+            officialExtensions:
+              - siderolabs/util-linux-tools
+              - siderolabs/iscsi-tools
+              - siderolabs/nonfree-kmod-nvidia-production
+              - siderolabs/nvidia-container-toolkit-production
+
 controlPlane:
     patches:
-        - '@./patches/controlplane.yaml'
+      - '@./patches/controlplane.yaml'
     kernelModules:
      - name: nvme_tcp
      - name: vfio_pci
@@ -58,8 +128,6 @@ controlPlane:
                     - siderolabs/util-linux-tools
                     - siderolabs/iscsi-tools
                     - siderolabs/qemu-guest-agent
-                    - siderolabs/nonfree-kmod-nvidia-production
-                    - siderolabs/nvidia-container-toolkit-production
     machineFiles:
     - content: |
         [plugins."io.containerd.cri.v1.images"]
@@ -84,10 +152,6 @@ worker:
      - name: nvme_tcp
      - name: vfio_pci
      - name: uio_pci_generic
-     - name: nvidia
-     - name: nvidia_uvm
-     - name: nvidia_drm
-     - name: nvidia_modeset
     schematic:
         customization:
             systemExtensions:
@@ -95,8 +159,6 @@ worker:
                     - siderolabs/util-linux-tools
                     - siderolabs/iscsi-tools
                     - siderolabs/qemu-guest-agent
-                    - siderolabs/nonfree-kmod-nvidia-production
-                    - siderolabs/nvidia-container-toolkit-production
     machineFiles:
     - content: |
         [plugins."io.containerd.cri.v1.images"]

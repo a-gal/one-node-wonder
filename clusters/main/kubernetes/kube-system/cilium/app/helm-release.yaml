@@ -78,5 +78,5 @@ spec:
     operator:
       rollOutPods: true
       # won't reach 2 on single node
-      replicas: 1
+      replicas: 2
     rollOutCiliumPods: true
