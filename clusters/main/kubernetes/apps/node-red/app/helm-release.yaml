@@ -50,8 +50,8 @@ spec:
         volsync:
           - credentials: backup
             dest:
-              enabled: true
+              enabled: false
             name: backup
             src:
-              enabled: true
+              enabled: false
             type: restic
