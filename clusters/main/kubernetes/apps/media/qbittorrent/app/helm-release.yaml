@@ -17,6 +17,11 @@ spec:
   releaseName: qbittorrent
   values:
     TZ: Asia/Yekaterinburg
+    workload:
+      main:
+        podSpec:
+          nodeSelector:
+            storage-connection: direct # VM on NAS itself
     credentials:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}

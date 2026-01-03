@@ -29,11 +29,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    workload:
-      main:
-        podSpec:
-          nodeSelector:
-            node-type: high-performance
     ingress:
       main:
         enabled: true
