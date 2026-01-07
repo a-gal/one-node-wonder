@@ -7,12 +7,14 @@ allowVolumeExpansion: true
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
 parameters:
+  # cnpg runs with two replicas by default
   numberOfReplicas: "1"
   backupTargetName: default
   dataEngine: v1
-  # recommended for already replicated databases
+  # strict-local is recommended for already replicated databases
+  # but seem to disable automigration to local storage
   # https://longhorn.io/docs/1.10.1/best-practices/#io-performance
-  dataLocality: strict-local
+  dataLocality: best-effort
   disableRevisionCounter: 'true'
   fromBackup: ''
   fsType: ext4
