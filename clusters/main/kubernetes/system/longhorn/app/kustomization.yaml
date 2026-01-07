@@ -5,5 +5,5 @@ resources:
   - helm-release.yaml
   - volumeSnapshotClass.yaml
   - ingress.yaml
-  - cnpg-storage-class.yaml
+#  - cnpg-storage-class.yaml
   - jobs
