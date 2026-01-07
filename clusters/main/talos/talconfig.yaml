@@ -44,6 +44,7 @@ nodes:
             ip: ${VIP}
       nodeLabels:
         storage-connection: direct
+        gpu-type: nvidia
       schematic:
         customization:
           extraKernelArgs:
