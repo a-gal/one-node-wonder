@@ -16,8 +16,6 @@ spec:
         namespace: flux-system
   releaseName: immich
   values:
-    global:
-      stopAll: true
     TZ: Asia/Yekaterinburg
     immich:
       mlImageType: mlCudaImage
