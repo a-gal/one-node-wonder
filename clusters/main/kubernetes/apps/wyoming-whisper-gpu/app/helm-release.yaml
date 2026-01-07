@@ -43,6 +43,8 @@ spec:
       main:
         podSpec:
           runtimeClassName: "nvidia"
+          nodeSelector:
+            gpu-type: nvidia
           containers:
             main:
               env:
