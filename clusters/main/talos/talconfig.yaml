@@ -3,7 +3,7 @@ clusterName: ${CLUSTERNAME}
 talosVersion: v1.11.6
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
 kubernetesVersion: v1.34.3
-endpoint: https://${MASTER1IP}:6443
+endpoint: https://${VIP}:6443
 allowSchedulingOnControlPlanes: true
 additionalMachineCertSans:
     - 127.0.0.1
@@ -44,7 +44,6 @@ nodes:
             ip: ${VIP}
       nodeLabels:
         storage-connection: direct
-        gpu-type: nvidia
       schematic:
         customization:
           extraKernelArgs:
@@ -54,10 +53,6 @@ nodes:
               - siderolabs/util-linux-tools
               - siderolabs/iscsi-tools
               - siderolabs/qemu-guest-agent
-              - siderolabs/nonfree-kmod-nvidia-production
-              - siderolabs/nvidia-container-toolkit-production
-      patches:
-        - '@./patches/nvidia.yaml'
 
     - hostname: k8s-control-pure-2
       ipAddress: ${MASTER2IP_IP}
@@ -100,8 +95,9 @@ nodes:
             ip: ${VIP}
       nodeLabels:
         node-type: high-performance
-#      patches:
-#        - '@./patches/nvidia.yaml'
+        gpu-type: nvidia
+      patches:
+        - '@./patches/nvidia.yaml'
       schematic:
         customization:
           extraKernelArgs:
@@ -110,8 +106,8 @@ nodes:
             officialExtensions:
               - siderolabs/util-linux-tools
               - siderolabs/iscsi-tools
-#              - siderolabs/nonfree-kmod-nvidia-production
-#              - siderolabs/nvidia-container-toolkit-production
+              - siderolabs/nonfree-kmod-nvidia-production
+              - siderolabs/nvidia-container-toolkit-production
 
 controlPlane:
     patches:
