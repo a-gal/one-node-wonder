@@ -6,7 +6,6 @@ resources:
   - openspeedtest/ks.yaml
   - filebrowser/ks.yaml
   - media
-  - cloudflared/ks.yaml
   - flaresolverr/ks.yaml
   - homepage/ks.yaml
   - huginn-extr/ks.yaml
