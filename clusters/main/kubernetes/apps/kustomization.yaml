@@ -28,3 +28,4 @@ resources:
   - pgadmin/ks.yaml
   - elib-to-ebook/ks.yaml
   - booklore/ks.yaml
+  - huginn/ks.yaml
