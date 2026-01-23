@@ -76,6 +76,13 @@ spec:
               command: /scripts/init bin/threaded.rb
 #              env: {{ .Values.workload.main.podSpec.containers.main.env | deepCopy }}
               env: *huginn-env
+              probes:
+                readiness:
+                  enabled: false
+                liveness:
+                  enabled: false
+                startup:
+                  enabled: false
     service:
       main:
         targetSelector: main
