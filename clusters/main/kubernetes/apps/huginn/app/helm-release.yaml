@@ -34,6 +34,8 @@ spec:
     workload:
       main:
         podSpec:
+          type: Deployment
+          replicas: 1
           containers:
             main:
               env: &huginn-env
@@ -63,6 +65,9 @@ spec:
                   port: "{{ .Values.service.main.ports.main.port }}"
       worker:
         enabled: true
+        primary: true
+        imageSelector: "{{ .Values.image }}"
+        replicas: 1
         type: Deployment
         podSpec:
           containers:
