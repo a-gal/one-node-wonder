@@ -29,9 +29,9 @@ spec:
     keepHistory: false
   values:
 #    # Until https://github.com/trueforge-org/containerforge/issues/535 is fixed
-#    image:
-#      repository: docker.io/homeassistant/home-assistant
-#      tag: "2026.1.3"
+    image:
+      repository: docker.io/homeassistant/home-assistant
+      tag: "2026.1.3"
     TZ: Asia/Yekaterinburg
     homeassistant:
       trusted_proxies: ["172.16.0.0/16"]
