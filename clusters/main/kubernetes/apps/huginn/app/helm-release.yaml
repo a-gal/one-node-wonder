@@ -52,6 +52,7 @@ spec:
                 DATABASE_NAME: "{{ .Values.cnpg.main.database }}"
                 DATABASE_USERNAME: "{{ .Values.cnpg.main.user }}"
                 DATABASE_PASSWORD: "{{ .Values.cnpg.main.creds.password }}"
+                DO_NOT_CREATE_DATABASE: "true"
 
                 # non-chart values?
                 APP_SECRET_TOKEN: ${HUGINN_APP_SECRET_TOKEN}
@@ -79,7 +80,7 @@ spec:
               primary: true
 #              imageSelector: "{{ .Values.image }}"
               enabled: true
-              command: /bin/bash -c "/scripts/init bin/threaded.rb"
+              command: /bin/sh -c "/scripts/init bin/threaded.rb"
 #              env: {{ .Values.workload.main.podSpec.containers.main.env | deepCopy }}
               env: *huginn-env
               probes:
