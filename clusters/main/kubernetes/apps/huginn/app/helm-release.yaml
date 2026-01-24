@@ -31,6 +31,9 @@ spec:
         secretKey: ${VOLSYNC_SECRET_KEY}
         type: s3
         url: ${VOLSYNC_URL}
+    securityContext:
+      container:
+        readOnlyRootFilesystem: false
     workload:
       main:
         podSpec:
@@ -73,7 +76,7 @@ spec:
               primary: true
 #              imageSelector: "{{ .Values.image }}"
               enabled: true
-              command: /scripts/init bin/threaded.rb
+              command: /bin/bash -c "/scripts/init bin/threaded.rb"
 #              env: {{ .Values.workload.main.podSpec.containers.main.env | deepCopy }}
               env: *huginn-env
               probes:
@@ -93,6 +96,9 @@ spec:
             targetSelector: main
     cnpg:
       main:
+        cluster:
+          storage:
+            storageClass: longhorn-cnpg
         enabled: true
         pgVersion: 16
         user: huginn
