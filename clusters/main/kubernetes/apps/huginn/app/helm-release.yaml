@@ -33,7 +33,10 @@ spec:
         url: ${VOLSYNC_URL}
     securityContext:
       container:
+        runAsUser: 0
+        runAsGroup: 0
         readOnlyRootFilesystem: false
+        runAsNonRoot: false
     workload:
       main:
         podSpec:
