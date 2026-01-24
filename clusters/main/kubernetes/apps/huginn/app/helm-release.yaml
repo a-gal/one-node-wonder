@@ -105,6 +105,8 @@ spec:
         cluster:
           storage:
             storageClass: longhorn-cnpg
+          walStorage:
+            storageClass: longhorn-cnpg
         enabled: true
         pgVersion: 16
         user: huginn
