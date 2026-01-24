@@ -108,8 +108,8 @@ spec:
         backups:
           enabled: true
           credentials: backup-cnpg
-        recovery:
-          credentials: backup-cnpg
+#        recovery:
+#          credentials: backup-cnpg
 
     ingress:
       main:
