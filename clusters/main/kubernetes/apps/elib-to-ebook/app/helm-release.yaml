@@ -60,7 +60,7 @@ spec:
             main:
               env:
                 COMPlus_EnableDiagnostics: 0
-                TMPDIR: /tmp
+                TMPDIR: /tmp/
               probes:
                 liveness:
                   enabled: true
