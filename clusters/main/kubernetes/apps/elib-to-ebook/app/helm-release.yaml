@@ -52,7 +52,13 @@ spec:
               enabled: false
     securityContext:
       container:
+        # TODO: fix this here
+        # https://github.com/OnlyFart/Elib2Ebook/blob/a0ed5c46a89df96feb69460f89420fff38fd1928/Elib2EbookWeb/Components/Pages/Home.razor#L32
+        # make PR
+        runAsUser: 0
+        runAsGroup: 0
         readOnlyRootFilesystem: false
+        runAsNonRoot: false
     workload:
       main:
         podSpec:
@@ -60,7 +66,6 @@ spec:
             main:
               env:
                 COMPlus_EnableDiagnostics: 0
-                TMPDIR: /tmp/
               probes:
                 liveness:
                   enabled: true
