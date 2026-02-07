@@ -85,7 +85,7 @@ nodes:
         size: ">= 100GB"
       networkInterfaces:
         # suffix is the adapter mac adres.
-        - interface: eth0
+        - interface: eth1
           addresses:
             - ${MASTER3IP_CIDR}
           routes:
