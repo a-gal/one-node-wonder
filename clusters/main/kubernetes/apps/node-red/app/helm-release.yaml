@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: node-red
-      version: 22.14.19
+      version: 22.14.20
       sourceRef:
         kind: HelmRepository
         name: truecharts
