@@ -57,21 +57,17 @@ spec:
                 # non-chart values?
                 APP_SECRET_TOKEN: ${HUGINN_APP_SECRET_TOKEN}
                 INVITATION_CODE: ${HUGINN_INVITATION_CODE}
-              command:
-                - /bin/sh
-                - -c
-                - sleep infinity
               probes:
                 readiness:
-                  enabled: false
+                  enabled: true
                   type: tcp
                   port: "{{ .Values.service.main.ports.main.port }}"
                 liveness:
-                  enabled: false
+                  enabled: true
                   type: tcp
                   port: "{{ .Values.service.main.ports.main.port }}"
                 startup:
-                  enabled: false
+                  enabled: true
                   type: tcp
                   port: "{{ .Values.service.main.ports.main.port }}"
       worker:
@@ -82,13 +78,11 @@ spec:
           containers:
             worker:
               primary: true
+#              imageSelector: "{{ .Values.image }}"
               enabled: true
               command:
-                - /bin/sh
-                - -c
-                - sleep infinity
-#                - /scripts/init
-#                - bin/threaded.rb
+                - /scripts/init
+                - bin/threaded.rb
 #              env: {{ .Values.workload.main.podSpec.containers.main.env | deepCopy }}
               env: *huginn-env
               probes:
