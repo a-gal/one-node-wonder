@@ -45,7 +45,7 @@ spec:
           containers:
             main:
               env: &huginn-env
-                DOMAIN: huginn-test.${LOCAL_DOMAIN}
+                DOMAIN: huginn.${BASE_DOMAIN}
                 DATABASE_ADAPTER: postgresql
                 DATABASE_HOST: "{{ .Values.cnpg.main.creds.host }}"
                 DATABASE_PORT: 5432
@@ -124,7 +124,7 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: huginn-test.${LOCAL_DOMAIN}
+          - host: huginn.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -136,6 +136,7 @@ spec:
             enabled: true
             name: Huginn
             description: Create agents that monitor and act on your behalf. Your agents are standing by!
+            icon: https://raw.githubusercontent.com/huginn/huginn/refs/heads/master/media/huginn-icon.svg
             group: Automation
             widget:
               enabled: false
