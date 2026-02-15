@@ -122,7 +122,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: internal
+        ingressClassName: external
         hosts:
           - host: huginn.${BASE_DOMAIN}
             paths:
