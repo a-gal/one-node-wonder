@@ -81,15 +81,34 @@ spec:
 #              imageSelector: "{{ .Values.image }}"
               enabled: true
               command:
-                - /scripts/init
-                - bin/threaded.rb
+                - bash
+                - -c
+                - |
+                    /scripts/init bin/threaded.rb | while read line; do 
+                      echo "$line"
+                      echo "ok" > /tmp/healthz_status
+                    done &
+                    # Wait for the background process to exit
+                    wait $!
 #              env: {{ .Values.workload.main.podSpec.containers.main.env | deepCopy }}
               env: *huginn-env
               probes:
                 readiness:
                   enabled: false
                 liveness:
-                  enabled: false
+                  enabled: true
+                  type: exec
+                  command:
+                    - find
+                    - /tmp/healthz_status
+                    - -mmin
+                    - -1
+                  spec:
+                    initialDelaySeconds: 60
+                    periodSeconds: 30
+                    timeoutSeconds: 10
+                    failureThreshold: 3
+                    successThreshold: 1
                 startup:
                   enabled: false
     service:
