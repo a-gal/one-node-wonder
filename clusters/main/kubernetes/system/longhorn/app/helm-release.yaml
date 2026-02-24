@@ -31,6 +31,10 @@ spec:
           tag: v1.11.0-hotfix-1
         instanceManager:
           tag: v1.11.0-hotfix-1
+    preUpgradeChecker:
+      upgradeVersionCheck: false
+    upgradeCheck:
+      enabled: false
     defaultSettings:
       # Increase to 3 for a multi-node cluster
       defaultReplicaCount: "2"
