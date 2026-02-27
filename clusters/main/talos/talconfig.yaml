@@ -54,7 +54,7 @@ nodes:
               - siderolabs/iscsi-tools
               - siderolabs/qemu-guest-agent
 
-    - hostname: k8s-control-pure-2
+    - hostname: k8s-control-2
       ipAddress: ${MASTER2IP_IP}
       controlPlane: true
       nameservers:
@@ -64,7 +64,7 @@ nodes:
         size: ">= 100GB"
       networkInterfaces:
         # suffix is the adapter mac adres.
-        - interface: eth0
+        - interface: eth1
           addresses:
             - ${MASTER2IP_CIDR}
           routes:
@@ -72,8 +72,18 @@ nodes:
               gateway: ${GATEWAY}
           vip:
             ip: ${VIP}
-      patches:
-        - '@./patches/pure-controlplane.yaml'
+      nodeLabels:
+        gpu-type: intel
+      schematic:
+        customization:
+          extraKernelArgs:
+            - net.ifnames=0
+          systemExtensions:
+            officialExtensions:
+              - siderolabs/util-linux-tools
+              - siderolabs/iscsi-tools
+              - siderolabs/intel-ucode
+              - siderolabs/i915
 
     - hostname: k8s-control-3-highperf
       ipAddress: ${MASTER3IP_IP}
