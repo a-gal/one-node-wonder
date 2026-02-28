@@ -17,6 +17,9 @@ spec:
   releaseName: huginn
   values:
     TZ: Asia/Yekaterinburg
+    # huh?
+    podOptions:
+      hostUsers: true
     image:
       repository: ghcr.io/huginn/huginn-single-process
       pullPolicy: IfNotPresent
