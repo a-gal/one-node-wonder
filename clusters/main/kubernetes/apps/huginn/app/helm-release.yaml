@@ -44,6 +44,8 @@ spec:
           replicas: 1
           containers:
             main:
+              command:
+                - /scripts/init
               env: &huginn-env
                 DOMAIN: huginn.${BASE_DOMAIN}
                 DATABASE_ADAPTER: postgresql
