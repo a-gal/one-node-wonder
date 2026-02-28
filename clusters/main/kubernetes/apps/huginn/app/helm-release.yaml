@@ -33,10 +33,10 @@ spec:
         url: ${VOLSYNC_URL}
     securityContext:
       container:
-        runAsUser: 0
-        runAsGroup: 0
+        runAsUser: 1001
+        runAsGroup: 568
         readOnlyRootFilesystem: false
-        runAsNonRoot: false
+        runAsNonRoot: true
     workload:
       main:
         podSpec:
@@ -44,10 +44,6 @@ spec:
           replicas: 1
           containers:
             main:
-              command:
-                - bash
-                - -c
-                - sleep infinity
               env: &huginn-env
                 DOMAIN: huginn.${BASE_DOMAIN}
                 DATABASE_ADAPTER: postgresql
