@@ -17,6 +17,9 @@ spec:
   releaseName: huginn
   values:
     TZ: Asia/Yekaterinburg
+    # huh?
+    podOptions:
+      hostUsers: true
     image:
       repository: ghcr.io/huginn/huginn-single-process
       pullPolicy: IfNotPresent
@@ -44,10 +47,6 @@ spec:
           replicas: 1
           containers:
             main:
-              command:
-                - bash
-                - -c
-                - sleep infinity
               env: &huginn-env
                 DOMAIN: huginn.${BASE_DOMAIN}
                 DATABASE_ADAPTER: postgresql
