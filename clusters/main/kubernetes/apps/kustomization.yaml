@@ -12,7 +12,6 @@ resources:
   - metube/ks.yaml
   - node-red/ks.yaml
   - organizr/ks.yaml
-  - portainer-extr/ks.yaml
   - prowlarr/ks.yaml
   - three-x/ks.yaml
   - apache-webdav/ks.yaml
