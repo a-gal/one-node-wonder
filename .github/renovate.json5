@@ -4,14 +4,6 @@
     "config:recommended",
     "github>trueforge-org/renovate-config"
   ],
-  "minor": {
-    "packageRules": [
-      {
-        "matchPackageNames": ["ghcr.io/siderolabs/kubelet", "ghcr.io/siderolabs/installer"],
-        "dependencyDashboardApproval": true
-      }
-    ]
-  },
   "schedule": [
     "* 22-23,0-3 * * *"
   ]
