@@ -86,5 +86,3 @@ spec:
                 ND_LASTFM_APIKEY: ${ND_LASTFM_APIKEY}
                 ND_LASTFM_SECRET: ${ND_LASTFM_SECRET}
                 ND_MUSICFOLDER: /music
-                ND_SPOTIFY_ID: ${ND_SPOTIFY_ID}
-                ND_SPOTIFY_SECRET: ${ND_SPOTIFY_SECRET}
