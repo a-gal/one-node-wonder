@@ -15,6 +15,7 @@ spec:
         name: truecharts
         namespace: flux-system
   values:
+    stopAll: true
     image:
       repository: dumbwareio/dumbassets
       pullPolicy: IfNotPresent
