@@ -125,5 +125,5 @@ spec:
                   enabled: true
                   path: /
                   type: tcp
-        replicas: 1
+        replicas: 0
         type: Deployment
