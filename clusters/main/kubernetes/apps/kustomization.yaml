@@ -4,7 +4,7 @@ resources:
   - kubernetes-dashboard/ks.yaml
   - librespeed/ks.yaml
   - openspeedtest/ks.yaml
-  - filebrowser/ks.yaml
+#  - filebrowser/ks.yaml
   - media
   - flaresolverr/ks.yaml
   - homepage/ks.yaml

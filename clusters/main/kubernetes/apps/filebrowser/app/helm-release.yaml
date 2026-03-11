@@ -30,6 +30,10 @@ spec:
     keepHistory: false
   values:
     persistence:
+      config:
+        size: 512 Mi
+      database:
+        size: 512 Mi
       data:
         enabled: true
         type: nfs
