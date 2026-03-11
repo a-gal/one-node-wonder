@@ -5,6 +5,7 @@ resources:
   - audiobookshelf/ks.yaml
   - flacon/ks.yaml
   - jellyfin/ks.yaml
+  - jellyfun/ks.yaml
   - lidarr/ks.yaml
   - navidrome/ks.yaml
   - qbittorrent/ks.yaml
