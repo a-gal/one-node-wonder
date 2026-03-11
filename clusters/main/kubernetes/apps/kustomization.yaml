@@ -23,5 +23,4 @@ resources:
   - browserless-chrome/ks.yaml
   - pgadmin/ks.yaml
   - elib-to-ebook/ks.yaml
-  - booklore/ks.yaml
   - huginn/ks.yaml
