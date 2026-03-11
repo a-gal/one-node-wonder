@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: audiobookshelf
-  namespace: media
+  namespace: audiobookshelf
 spec:
   interval: 15m
   chart:
@@ -72,6 +72,7 @@ spec:
         server: ${NFS_SERVER}
         type: nfs
       config:
+        size: 100Mi
         volsync:
           - credentials: backup
             name: backup
@@ -81,6 +82,7 @@ spec:
               enabled: true
             type: restic
       metadata:
+        size: 3Gi
         volsync:
           - credentials: backup
             name: backup-meta
