@@ -92,7 +92,7 @@ spec:
         enabled: true
         mountPath: /etc/x-ui/
         readOnly: false
-        size: 128Gi
+        size: 4Gi
         type: pvc
         volsync:
           - credentials: backup
