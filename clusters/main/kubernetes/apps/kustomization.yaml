@@ -21,7 +21,7 @@ resources:
   - dumbassets/ks.yaml
   - home-assistant/ks.yaml
   - wyoming-whisper-gpu/ks.yaml
-  - browserless-chrome/ks.yaml
+#  - browserless-chrome/ks.yaml
   - pgadmin/ks.yaml
   - elib-to-ebook/ks.yaml
   - booklore/ks.yaml

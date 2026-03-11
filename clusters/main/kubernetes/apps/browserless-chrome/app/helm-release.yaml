@@ -28,6 +28,11 @@ spec:
           certManager:
             certificateIssuer: fiveoseven
             enabled: true
+    persistence:
+      metrics:
+        size: 2Gi
+      downloads:
+        size: 10Gi # I'll just use NFS share if I need more
     workload:
       main:
         podSpec:
