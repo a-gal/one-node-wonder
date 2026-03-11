@@ -56,7 +56,7 @@ spec:
     persistence:
       maybe-config:
         enabled: true
-        existingClaim: volsync-jellyfin-config-backup-dest-dest
+        existingClaim: volsync-src-jellyfin-config-backup-cache
         mountPath: /maybe-config
       config:
         size: 20Gi
