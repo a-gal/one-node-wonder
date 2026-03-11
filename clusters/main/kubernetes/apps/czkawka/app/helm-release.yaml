@@ -39,6 +39,12 @@ spec:
             widget:
               enabled: false
     persistence:
+      config:
+        size: 1Gi
+      storage:
+        size: 1Gi
+      trash:
+        size: 1Gi
       legacy-library:
         type: nfs
         enabled: true
