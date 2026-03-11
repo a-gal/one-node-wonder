@@ -98,6 +98,19 @@ spec:
                 - /bin/bash
                 - -c
                 - sleep infinity
+              probes:
+                liveness:
+                  enabled: true
+                  type: exec
+                  command: 'true'
+                readiness:
+                  enabled: true
+                  type: exec
+                  command: 'true'
+                startup:
+                  enabled: true
+                  type: exec
+                  command: 'true'
               env:
                 http_proxy: ${HTTP_PROXY}
                 https_proxy: ${HTTP_PROXY}
