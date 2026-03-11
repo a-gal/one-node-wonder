@@ -54,12 +54,8 @@ spec:
                 key: ${JELLYFIN_API_KEY}
               enabled: true
     persistence:
-      maybe-config:
-        enabled: true
-        existingClaim: volsync-src-jellyfin-config-backup-cache
-        mountPath: /maybe-config
       config:
-        size: 20Gi
+        size: 100Mi
         volsync:
           - credentials: backup
             name: backup
@@ -69,7 +65,7 @@ spec:
               enabled: true
             type: restic
       data:
-        size: 20Gi
+        size: 40Gi
         volsync:
           - credentials: backup
             name: backup-data
@@ -98,23 +94,6 @@ spec:
             gpu-type: nvidia
           containers:
             main:
-              command:
-                - /bin/bash
-                - -c
-                - sleep infinity
-              probes:
-                liveness:
-                  enabled: true
-                  type: exec
-                  command: 'true'
-                readiness:
-                  enabled: true
-                  type: exec
-                  command: 'true'
-                startup:
-                  enabled: true
-                  type: exec
-                  command: 'true'
               env:
                 http_proxy: ${HTTP_PROXY}
                 https_proxy: ${HTTP_PROXY}
