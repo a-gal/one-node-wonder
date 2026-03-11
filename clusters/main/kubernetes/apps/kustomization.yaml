@@ -7,7 +7,7 @@ resources:
   - filebrowser/ks.yaml
   - media
   - flaresolverr/ks.yaml
-#  - homepage/ks.yaml
+  - homepage/ks.yaml
   - kms/ks.yaml
   - metube/ks.yaml
   - node-red/ks.yaml
