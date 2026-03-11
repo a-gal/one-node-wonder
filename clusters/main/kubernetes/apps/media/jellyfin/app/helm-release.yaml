@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: jellyfin
-  namespace: media
+  namespace: jellyfin
 spec:
   interval: 15m
   chart:
@@ -55,6 +55,7 @@ spec:
               enabled: true
     persistence:
       config:
+        size: 100Mi
         volsync:
           - credentials: backup
             name: backup
@@ -64,6 +65,7 @@ spec:
               enabled: true
             type: restic
       data:
+        size: 50Gi
         volsync:
           - credentials: backup
             name: backup-data
