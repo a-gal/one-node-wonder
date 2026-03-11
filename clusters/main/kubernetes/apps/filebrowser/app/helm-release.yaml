@@ -31,9 +31,9 @@ spec:
   values:
     persistence:
       config:
-        size: 512 Mi
+        size: 512Mi
       database:
-        size: 512 Mi
+        size: 512Mi
       data:
         enabled: true
         type: nfs
