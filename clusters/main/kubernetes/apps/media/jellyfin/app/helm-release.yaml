@@ -54,6 +54,10 @@ spec:
                 key: ${JELLYFIN_API_KEY}
               enabled: true
     persistence:
+      maybe-config:
+        enabled: true
+        existingClaim: volsync-jellyfin-config-backup-dest-dest
+        mountPath: /maybe-config
       config:
         size: 20Gi
         volsync:
