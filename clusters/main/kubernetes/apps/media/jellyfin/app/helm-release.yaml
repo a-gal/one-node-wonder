@@ -94,6 +94,10 @@ spec:
             gpu-type: nvidia
           containers:
             main:
+              command:
+                - /bin/bash
+                - -c
+                - sleep infinity
               env:
                 http_proxy: ${HTTP_PROXY}
                 https_proxy: ${HTTP_PROXY}
