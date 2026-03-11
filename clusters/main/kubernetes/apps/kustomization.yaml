@@ -13,7 +13,7 @@ resources:
   - node-red/ks.yaml
   - organizr/ks.yaml
   - prowlarr/ks.yaml
-  - three-x/ks.yaml
+#  - three-x/ks.yaml
   - apache-webdav/ks.yaml
   - immich/ks.yaml
   - czkawka/ks.yaml
