@@ -16,3 +16,6 @@ spec:
   releaseName: flaresolverr
   values:
     TZ: Asia/Yekaterinburg
+    persistence:
+      config:
+        size: 1Gi
