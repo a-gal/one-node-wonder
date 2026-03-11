@@ -55,7 +55,7 @@ spec:
               enabled: true
     persistence:
       config:
-        size: 100Mi
+        size: 20Gi
         volsync:
           - credentials: backup
             name: backup
@@ -65,7 +65,7 @@ spec:
               enabled: true
             type: restic
       data:
-        size: 50Gi
+        size: 20Gi
         volsync:
           - credentials: backup
             name: backup-data
