@@ -15,7 +15,7 @@ resources:
   - three-x/ks.yaml
   - apache-webdav/ks.yaml
   - immich/ks.yaml
-#  - czkawka/ks.yaml
+  - czkawka/ks.yaml
   - syncthing/ks.yaml
   - satisfactory/ks.yaml
   - dumbassets/ks.yaml
