@@ -78,7 +78,7 @@ spec:
         enabled: true
         mountPath: /app/data/
         readOnly: false
-        size: 128Gi
+        size: 4Gi
         type: pvc
         volsync:
           - credentials: backup
@@ -92,7 +92,7 @@ spec:
         enabled: true
         mountPath: /app/public/assets/
         readOnly: false
-        size: 128Gi
+        size: 10Gi
         type: pvc
         volsync:
           - credentials: backup-assets
