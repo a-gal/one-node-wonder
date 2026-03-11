@@ -57,7 +57,7 @@ spec:
             - search:
                 provider: duckduckgo
                 target: _blank
-          
+
           services.yaml: |
             ---
             # For configuration options and examples, please see:
@@ -69,10 +69,13 @@ spec:
               - Truenas:
                   href: https://truenas.${BASE_DOMAIN}/
                   icon: si-truenas
-                  description: The Old Home
+                  description: Big ol' box of spinning rust (and a couple of ssds)
                   siteMonitor: https://truenas.${BASE_DOMAIN}/
             - Automation: []
         enabled: true
+    persistence:
+      config:
+        size: 200Mi
     ingress:
       main:
         enabled: true
