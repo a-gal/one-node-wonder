@@ -46,12 +46,12 @@ spec:
             widget:
               enabled: false
     persistence:
-#      size: 5Gi
+      size: 5Gi
       data:
         volsync:
           - credentials: backup
             dest:
-              enabled: false
+              enabled: true
             name: backup
             src:
               enabled: true
