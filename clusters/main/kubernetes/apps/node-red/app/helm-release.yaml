@@ -20,7 +20,7 @@ spec:
     credentials:
       backup:
         accessKey: ${VOLSYNC_ACCESS_KEY}
-        bucket: backups.node-red
+        bucket: backups.node-red-new
         encrKey: "${VOLSYNC_ENCR_KEY}"
         name: backup
         path: ""
@@ -46,6 +46,7 @@ spec:
             widget:
               enabled: false
     persistence:
+#      size: 5Gi
       data:
         volsync:
           - credentials: backup
@@ -53,5 +54,5 @@ spec:
               enabled: false
             name: backup
             src:
-              enabled: false
+              enabled: true
             type: restic
