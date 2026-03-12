@@ -6,4 +6,5 @@ resources:
   - volumeSnapshotClass.yaml
   - ingress.yaml
   - cnpg-storage-class.yaml
+  - volsync-storage-class.yaml
   - jobs
