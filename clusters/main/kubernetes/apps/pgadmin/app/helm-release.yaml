@@ -47,6 +47,7 @@ spec:
               enabled: false
     persistence:
       config:
+        size: 300Mi
         volsync:
           - credentials: backup
             dest:
