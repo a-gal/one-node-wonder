@@ -85,8 +85,12 @@ spec:
             name: backup
             dest:
               enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
             src:
               enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
             type: restic
       assets:
         enabled: true
@@ -99,8 +103,12 @@ spec:
             name: backup-assets
             dest:
               enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
             src:
               enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
             type: restic
     workload:
       main:

@@ -50,11 +50,15 @@ spec:
         size: 512Mi
         volsync:
           - credentials: backup
+            name: backup
             dest:
               enabled: true
-            name: backup
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
             src:
               enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
             type: restic
       books:
         type: nfs

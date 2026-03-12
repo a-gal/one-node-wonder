@@ -61,8 +61,12 @@ spec:
             name: backup
             dest:
               enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
             src:
               enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
             type: restic
       data:
         size: 40Gi
@@ -71,8 +75,12 @@ spec:
             name: backup-data
             dest:
               enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
             src:
               enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
             type: restic
       media:
         enabled: true
