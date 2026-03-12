@@ -48,6 +48,7 @@ spec:
                 key: ${PROWLARR_API_KEY}
     persistence:
       config:
+        size: 1Gi
         volsync:
           - credentials: backup
             name: backup
