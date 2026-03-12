@@ -17,7 +17,7 @@ resources:
   - syncthing/ks.yaml
   - satisfactory/ks.yaml
   - dumbassets/ks.yaml
-  - home-assistant/ks.yaml
+#  - home-assistant/ks.yaml
   - wyoming-whisper-gpu/ks.yaml
   - browserless-chrome/ks.yaml
   - pgadmin/ks.yaml
