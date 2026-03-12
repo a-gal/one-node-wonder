@@ -50,10 +50,13 @@ spec:
         size: 5Gi
         volsync:
           - credentials: backup
-            storageClass: longhorn-volsync
             dest:
+              storageClass: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
               enabled: true
             name: backup
             src:
+              storageClass: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
               enabled: true
             type: restic
