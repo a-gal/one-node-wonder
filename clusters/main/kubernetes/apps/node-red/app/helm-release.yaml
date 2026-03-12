@@ -51,12 +51,12 @@ spec:
         volsync:
           - credentials: backup
             dest:
-              storageClass: longhorn-volsync
+              storageClassName: longhorn-volsync
               cacheStorageClassName: longhorn-volsync
               enabled: true
             name: backup
             src:
-              storageClass: longhorn-volsync
+              storageClassName: longhorn-volsync
               cacheStorageClassName: longhorn-volsync
               enabled: true
             type: restic
