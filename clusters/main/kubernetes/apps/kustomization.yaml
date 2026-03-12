@@ -9,7 +9,7 @@ resources:
   - homepage/ks.yaml
   - kms/ks.yaml
   - metube/ks.yaml
-#  - node-red/ks.yaml
+  - node-red/ks.yaml
   - prowlarr/ks.yaml
   - three-x/ks.yaml
   - immich/ks.yaml
