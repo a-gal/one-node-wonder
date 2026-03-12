@@ -46,8 +46,8 @@ spec:
             widget:
               enabled: false
     persistence:
-      size: 5Gi
       data:
+        size: 5Gi
         volsync:
           - credentials: backup
             dest:
