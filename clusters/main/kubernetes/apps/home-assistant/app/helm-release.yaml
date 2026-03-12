@@ -56,6 +56,7 @@ spec:
         url: ${VOLSYNC_URL}
     persistence:
       config:
+        size: 10Gi
         volsync:
           - credentials: backup
             name: backup
@@ -73,15 +74,16 @@ spec:
         mode: recovery
         backups:
           enabled: true
-          revision: "1"
+          revision: "2"
           credentials: backup-cnpg
         recovery:
           credentials: backup-cnpg
+          revision: "1"
         cluster:
           storage:
-            size: "256Gi"
+            size: "10Gi"
           walStorage:
-            size: "256Gi"
+            size: "10Gi"
     ingress:
       main:
         enabled: true
