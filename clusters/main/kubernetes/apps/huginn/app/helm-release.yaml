@@ -123,22 +123,25 @@ spec:
             targetSelector: main
     cnpg:
       main:
+        enabled: true
         cluster:
           storage:
+            size: 2Gi
             storageClass: longhorn-cnpg
           walStorage:
+            size: 2Gi
             storageClass: longhorn-cnpg
-        enabled: true
         pgVersion: 16
         user: huginn
         database: huginn_production
         # non-chart values
-#        mode: recovery
+        mode: recovery
         backups:
           enabled: true
+          revision: "1"
           credentials: backup-cnpg
-#        recovery:
-#          credentials: backup-cnpg
+        recovery:
+          credentials: backup-cnpg
 
     ingress:
       main:
