@@ -50,6 +50,7 @@ spec:
         size: 5Gi
         volsync:
           - credentials: backup
+            storageClass: longhorn-volsync
             dest:
               enabled: true
             name: backup
