@@ -2,7 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    "github>trueforge-org/renovate-config"
+    "github>trueforge-org/renovate-config",
+    "github>trueforge-org/renovate-config:autoMergeLabels"
   ],
   "schedule": [
     "* 22-23,0-3 * * *"
