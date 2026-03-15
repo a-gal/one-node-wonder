@@ -3,7 +3,7 @@
   "extends": [
     "config:recommended",
     "github>trueforge-org/renovate-config",
-    "github>trueforge-org/renovate-config:autoMergeLabels"
+    "github>trueforge-org/renovate-config:autoMergeLabels.json5"
   ],
   "schedule": [
     "* 22-23,0-3 * * *"
