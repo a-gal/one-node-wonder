@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: esphome
+  namespace: esphome
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: esphome
+      version: 24.5.4
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: esphome
+  values:
+    TZ: Asia/Yekaterinburg
+    credentials:
+      backup:
+        accessKey: ${VOLSYNC_ACCESS_KEY}
+        bucket: backups.esphome
+        encrKey: "${VOLSYNC_ENCR_KEY}"
+        name: backup
+        path: ""
+        secretKey: ${VOLSYNC_SECRET_KEY}
+        type: s3
+        url: ${VOLSYNC_URL}
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: esphome.${LOCAL_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: fiveoseven
+            enabled: true
+          homepage:
+            enabled: true
+            group: Administration
+            widget:
+              enabled: false
+    workload:
+      main:
+        podSpec:
+          nodeSelector:
+            node-type: high-performance
+    addons:
+      codeserver:
+        enabled: true
+        container:
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 512Mi
+        ingress:
+          enabled: true
+          ingressClassName: internal
+          integrations:
+            certManager:
+              enabled: true
+              certificateIssuer: fiveoseven
+          hosts:
+            - host: code.esphome.${LOCAL_DOMAIN}
+              paths:
+                - path: /
+                  pathType: Prefix
+    persistence:
+      config:
+        size: 5Gi
+        volsync:
+          - credentials: backup
+            name: backup
+            dest:
+              enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
+            src:
+              enabled: true
+              storageClassName: longhorn-volsync
+              cacheStorageClassName: longhorn-volsync
+            type: restic
+      # caches platformio packages to prevent excess downloads
+      cache:
+        size: 20Gi
+      # caches compiled code to not require rebuilds
+      build:
+        size: 20Gi
+
+    resources:
+      limits:
+        cpu: 6000m
+        memory: 8Gi

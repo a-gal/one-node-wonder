@@ -23,3 +23,4 @@ resources:
   - pgadmin/ks.yaml
   - elib-to-ebook/ks.yaml
   - huginn/ks.yaml
+  - esphome/ks.yaml
