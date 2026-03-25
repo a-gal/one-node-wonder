@@ -74,4 +74,4 @@ spec:
             main:
               env:
                 OUTPUT_TEMPLATE: "%(title)s-%(id)s.%(ext)s"
-                YTDL_OPTIONS: '{"proxy": "${HTTP_PROXY}"}'
+                YTDL_OPTIONS: '{"proxy": "${HTTP_FULLPROXY}"}'
