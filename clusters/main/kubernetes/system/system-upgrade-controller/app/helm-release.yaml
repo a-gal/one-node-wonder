@@ -24,6 +24,7 @@ spec:
       strategy: rollback
       retries: 3
   values:
+    createDefaultServiceAccount: false
     controllers:
       system-upgrade-controller:
         strategy: RollingUpdate
@@ -57,6 +58,7 @@ spec:
               seccompProfile:
                 type: RuntimeDefault
     defaultPodOptions:
+      automountServiceAccountToken: true
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
