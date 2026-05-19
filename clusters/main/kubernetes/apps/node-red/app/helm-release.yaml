@@ -16,6 +16,9 @@ spec:
         namespace: flux-system
   releaseName: node-red
   values:
+    image:
+      repository: docker.io/nodered/node-red
+      tag: 4.1.10-22
     TZ: Asia/Yekaterinburg
     credentials:
       backup:
