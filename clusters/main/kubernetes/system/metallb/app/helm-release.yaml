@@ -25,3 +25,14 @@ spec:
   values:
     speaker:
       ignoreExcludeLB: true
+    # patch for https://github.com/metallb/metallb/issues/3056
+    # can be removed once the issue is fixed
+    prometheus:
+      serviceMonitor:
+        enabled: false
+      podMonitor:
+        enabled: false
+
+    frrk8s:
+      enabled: false
+    # end patch
