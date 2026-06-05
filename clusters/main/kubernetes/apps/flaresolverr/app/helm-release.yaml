@@ -19,3 +19,10 @@ spec:
     persistence:
       config:
         size: 1Gi
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                PROXY_URL: ${HTTP_FULLPROXY}
