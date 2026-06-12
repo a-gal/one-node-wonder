@@ -20,7 +20,7 @@ spec:
     image:
       repository: ghcr.io/huginn/huginn-single-process
       pullPolicy: IfNotPresent
-      tag: latest@sha256:1735c93f834178043143f32fc1d6287d8cae520585dd806bfe3a2559e3703d37
+      tag: latest@sha256:afe43b795c5a8bed0ea63f1710f8eedea22dacf5eae625b4e2cee834580ca91c
     credentials:
       backup-cnpg:
         accessKey: ${VOLSYNC_ACCESS_KEY}
