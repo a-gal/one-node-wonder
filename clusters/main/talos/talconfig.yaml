@@ -24,36 +24,6 @@ patches:
     - '@./patches/all.yaml'
 nodes:
     # We would adivce to always stick to a "k8s-something-1" style naming scheme
-    - hostname: k8s-control-1
-      ipAddress: ${MASTER1IP_IP}
-      controlPlane: true
-      nameservers:
-        - 1.1.1.1
-        - 8.8.8.8
-      installDiskSelector:
-        size: <= 1600GB
-      networkInterfaces:
-        # suffix is the adapter mac adres.
-        - interface: eth0
-          addresses:
-            - ${MASTER1IP_CIDR}
-          routes:
-            - network: 0.0.0.0/0
-              gateway: ${GATEWAY}
-          vip:
-            ip: ${VIP}
-      nodeLabels:
-        storage-connection: direct
-      schematic:
-        customization:
-          extraKernelArgs:
-            - net.ifnames=0
-          systemExtensions:
-            officialExtensions:
-              - siderolabs/util-linux-tools
-              - siderolabs/iscsi-tools
-              - siderolabs/qemu-guest-agent
-
     - hostname: k8s-control-2
       ipAddress: ${MASTER2IP_IP}
       controlPlane: true
@@ -84,6 +54,37 @@ nodes:
               - siderolabs/iscsi-tools
               - siderolabs/intel-ucode
               - siderolabs/i915
+
+    - hostname: k8s-control-1
+      ipAddress: ${MASTER1IP_IP}
+      controlPlane: true
+      nameservers:
+        - 1.1.1.1
+        - 8.8.8.8
+      installDiskSelector:
+        size: ">= 100GB"
+      networkInterfaces:
+        # suffix is the adapter mac adres.
+        - deviceSelector:
+            hardwareAddr: "00:a0:98:72:e6:4d"
+          addresses:
+            - ${MASTER1IP_CIDR}
+          routes:
+            - network: 0.0.0.0/0
+              gateway: ${GATEWAY}
+          vip:
+            ip: ${VIP}
+      nodeLabels:
+        storage-connection: direct
+      schematic:
+        customization:
+          extraKernelArgs:
+            - net.ifnames=0
+          systemExtensions:
+            officialExtensions:
+              - siderolabs/util-linux-tools
+              - siderolabs/iscsi-tools
+              - siderolabs/qemu-guest-agent
 
     - hostname: k8s-control-3-highperf
       ipAddress: ${MASTER3IP_IP}
