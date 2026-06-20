@@ -4,4 +4,5 @@ metadata:
   name: cluster
 spec:
   talos:
-    version: ${TALOS_VERSION}
+    # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
+    version: v1.12.9
