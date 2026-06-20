@@ -19,3 +19,4 @@ resources:
   # more goes here!
   - nvidia.yaml # just in case?
   - nvdp.yaml
+  - home-operations.yaml
