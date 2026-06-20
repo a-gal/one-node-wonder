@@ -5,3 +5,4 @@ resources:
 #  - system-upgrade-controller-plans/ks.yaml
   - clusterissuer/ks.yaml
   - blocky/ks.yaml
+  - tuppr-system-upgrade-plans/ks.yaml
