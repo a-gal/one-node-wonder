@@ -24,3 +24,4 @@ resources:
   - elib-to-ebook/ks.yaml
   - huginn/ks.yaml
   - esphome/ks.yaml
+  - actual-budget/ks.yaml
