@@ -6,7 +6,5 @@ resources:
   - ./deploykey.secret.yaml
   - ./clustersettings.secret.yaml
   - ./flux.yaml
-  # obsolete, gotta figure out how to remove it
-  - ./upgradesettings.yaml
   - ./namespace.yaml
   # - sopssecret.secret.yaml

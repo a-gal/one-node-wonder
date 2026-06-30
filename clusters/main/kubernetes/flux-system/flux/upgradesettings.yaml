@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-# obsolete, gotta figure out how to remove it
-metadata:
-  name: upgrade-settings
-  namespace: flux-system
-data:
-  TALOS_VERSION: v1.12.9
-  KUBERNETES_VERSION: v1.35.6
