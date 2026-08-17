@@ -23,7 +23,7 @@ spec:
           containers:
             main:
               env:
-                HOMEPAGE_ALLOWED_HOSTS: homepage.${LOCAL_DOMAIN}
+                HOMEPAGE_ALLOWED_HOSTS: *
     forceConfigFromValues: true
     configmap:
       config:
