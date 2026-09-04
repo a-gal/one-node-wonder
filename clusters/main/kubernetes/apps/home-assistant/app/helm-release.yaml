@@ -69,6 +69,12 @@ spec:
               storageClassName: longhorn-volsync
               cacheStorageClassName: longhorn-volsync
             type: restic
+      media:
+        enabled: true
+        type: pvc
+        size: 20Gi
+        readOnly: false
+        mountPath: /media
     cnpg:
       main:
         mode: recovery
