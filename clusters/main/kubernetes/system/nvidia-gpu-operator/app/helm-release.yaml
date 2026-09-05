@@ -18,6 +18,8 @@ spec:
     createNamespace: true
     remediation:
       retries: 3
+      # TODO: remove after debugging
+      remediateLastFailure: false
   upgrade:
     cleanupOnFail: true
     remediation:
