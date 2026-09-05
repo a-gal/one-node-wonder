@@ -35,6 +35,10 @@ spec:
       driverInstallDir: /usr/local
     nfd:
       enabled: false
+    validator:
+      image: cuda
+      repository: nvcr.io/nvidia
+      version: 12.8.1-base-ubuntu24.04
     devicePlugin:
       # can be removed on talos@1.14
 #      env:
