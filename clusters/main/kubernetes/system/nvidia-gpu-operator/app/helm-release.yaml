@@ -25,6 +25,10 @@ spec:
   values:
     driver:
       enabled: false
+    toolkit:
+      enabled: false
+    hostPaths:
+      driverInstallDir: /usr/local
     nfd:
       enabled: false
     migManager:
