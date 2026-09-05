@@ -18,14 +18,10 @@ spec:
     createNamespace: true
     remediation:
       retries: 3
-      # TODO: remove after debugging
-      remediateLastFailure: false
   upgrade:
     cleanupOnFail: true
     remediation:
       retries: 3
-      # TODO: remove after debugging
-      remediateLastFailure: false
   values:
     driver:
       enabled: false
@@ -38,10 +34,6 @@ spec:
     validator:
       version: v26.3.0
     devicePlugin:
-      # can be removed on talos@1.14
-#      env:
-#        - name: NVIDIA_CDI_HOOK_PATH
-#          value: /usr/local/bin/nvidia-cdi-hook
       config:
         name: device-plugin-config
         create: true
