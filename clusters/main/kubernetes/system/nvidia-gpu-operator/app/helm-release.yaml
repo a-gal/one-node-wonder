@@ -28,16 +28,16 @@ spec:
     toolkit:
       enabled: false
     hostPaths:
-      driverInstallDir: /usr/local/glibc/usr/lib
+      driverInstallDir: /usr/local
     nfd:
       enabled: false
     migManager:
       enabled: false
     devicePlugin:
       # can be removed on talos@1.14
-      env:
-        - name: NVIDIA_CDI_HOOK_PATH
-          value: /usr/local/bin/nvidia-cdi-hook
+#      env:
+#        - name: NVIDIA_CDI_HOOK_PATH
+#          value: /usr/local/bin/nvidia-cdi-hook
       config:
         name: device-plugin-config
         create: true
