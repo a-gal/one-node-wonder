@@ -35,8 +35,6 @@ spec:
       driverInstallDir: /usr/local
     nfd:
       enabled: false
-    migManager:
-      enabled: false
     devicePlugin:
       # can be removed on talos@1.14
 #      env:
