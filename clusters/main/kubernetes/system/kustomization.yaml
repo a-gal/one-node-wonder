@@ -12,4 +12,4 @@ resources:
   - spegel/ks.yaml
   - volsync/ks.yaml
   - tuppr/ks.yaml
-  - nvidia-gpu-operator/ks.yaml
+#  - nvidia-gpu-operator/ks.yaml
