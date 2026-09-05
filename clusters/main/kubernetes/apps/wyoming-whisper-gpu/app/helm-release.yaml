@@ -42,7 +42,6 @@ spec:
     workload:
       main:
         podSpec:
-          runtimeClassName: "nvidia"
           nodeSelector:
             gpu-type: nvidia
           containers:

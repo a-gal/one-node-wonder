@@ -22,12 +22,10 @@ spec:
     workload:
       machinelearning:
         podSpec:
-          runtimeClassName: "nvidia"
           nodeSelector:
             gpu-type: nvidia
       microservices:
         podSpec:
-          runtimeClassName: "nvidia"
           nodeSelector:
             gpu-type: nvidia
     credentials:
