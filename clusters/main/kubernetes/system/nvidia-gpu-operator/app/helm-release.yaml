@@ -36,7 +36,7 @@ spec:
     nfd:
       enabled: false
     validator:
-      version: 26.3.0
+      version: v26.3.0
     devicePlugin:
       # can be removed on talos@1.14
 #      env:
