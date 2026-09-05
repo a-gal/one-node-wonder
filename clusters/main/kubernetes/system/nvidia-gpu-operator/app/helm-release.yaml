@@ -28,7 +28,7 @@ spec:
     toolkit:
       enabled: false
     hostPaths:
-      driverInstallDir: /usr/local
+      driverInstallDir: /usr/local/glibc/usr/lib
     nfd:
       enabled: false
     migManager:
