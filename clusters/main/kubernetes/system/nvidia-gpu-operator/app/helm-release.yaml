@@ -34,6 +34,10 @@ spec:
     migManager:
       enabled: false
     devicePlugin:
+      # can be removed on talos@1.14
+      env:
+        - name: NVIDIA_CDI_HOOK_PATH
+          value: /usr/local/bin/nvidia-cdi-hook
       config:
         map:
           default: |-
