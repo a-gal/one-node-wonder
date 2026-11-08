@@ -43,7 +43,7 @@ spec:
       main:
         podSpec:
           nodeSelector:
-            gpu-type: nvidia
+            nvidia.com/gpu.present: true
           containers:
             main:
               env:

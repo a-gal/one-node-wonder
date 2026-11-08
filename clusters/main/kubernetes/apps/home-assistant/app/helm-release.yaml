@@ -40,7 +40,6 @@ spec:
         accessKey: ${VOLSYNC_ACCESS_KEY}
         bucket: backups.homeassistant
         encrKey: "${VOLSYNC_ENCR_KEY}"
-        name: backup
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
         type: s3
@@ -49,7 +48,6 @@ spec:
         accessKey: ${VOLSYNC_ACCESS_KEY}
         bucket: backups.homeassistant.cnpg
         encrKey: "${VOLSYNC_ENCR_KEY}"
-        name: backup-cnpg
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
         type: s3

@@ -25,7 +25,6 @@ spec:
         accessKey: ${VOLSYNC_ACCESS_KEY}
         bucket: backups.dumbassets
         encrKey: "${VOLSYNC_ENCR_KEY}"
-        name: backup
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
         type: s3
@@ -34,7 +33,6 @@ spec:
         accessKey: ${VOLSYNC_ACCESS_KEY}
         bucket: backups.dumbassets.assets
         encrKey: "${VOLSYNC_ENCR_KEY}"
-        name: backup-assets
         path: ""
         secretKey: ${VOLSYNC_SECRET_KEY}
         type: s3
