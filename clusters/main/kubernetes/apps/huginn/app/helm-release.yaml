@@ -39,8 +39,6 @@ spec:
     workload:
       main:
         podSpec:
-          type: Deployment
-          replicas: 1
           containers:
             main:
               command:
