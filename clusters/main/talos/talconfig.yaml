@@ -44,6 +44,8 @@ nodes:
             ip: ${VIP}
       nodeLabels:
         gpu-type: intel
+      patches:
+        - '@./patches/garbagecollection.yaml'
       schematic:
         customization:
           systemExtensions:
@@ -73,6 +75,8 @@ nodes:
             ip: ${VIP}
       nodeLabels:
         storage-connection: direct
+      patches:
+        - '@./patches/garbagecollection.yaml'
       schematic:
         customization:
           systemExtensions:
@@ -104,6 +108,7 @@ nodes:
         gpu-type: nvidia
       patches:
         - '@./patches/nvidia.yaml'
+        - '@./patches/garbagecollection.yaml'
       schematic:
         customization:
           systemExtensions:
